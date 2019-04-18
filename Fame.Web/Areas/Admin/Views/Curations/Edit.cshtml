@@ -1,0 +1,105 @@
+﻿@using Fame.Service.Extensions;
+@using Fame.Web.Areas.Admin.Models;
+@model CurationEditModel
+@{
+	ViewData["Title"] = "Curation";
+}
+
+<div class="admin-body">
+	<h2>@ViewData["Title"]</h2>
+
+
+	<div class="flex-row">
+		<div class="flex-2">
+			<h4>
+				@Model.PID
+				@if (Model.MediaAdded.HasValue)
+				{
+					<span class="text-success"> - @Model.MediaAdded Media Item(s) Added</span>
+				}
+			</h4>
+		</div>
+		<div class="flex-1 text-right">
+		</div>
+	</div>
+    <form Id="EditCuration" method="post" enctype="multipart/form-data" asp-controller="Curations" asp-action="Edit">
+
+        @Html.HiddenFor(m => m.PID)
+
+        <div class="flex-row m-b-lg">
+            <span class="min-width-md">Name:</span>
+            <span class="flex-1">@Model.Name</span>
+        </div>
+
+        <div class="flex-row m-b-lg">
+            <span class="min-width-md">Silhouette:</span>
+            @if (Model.Facet == null)
+            {
+                @Html.ActionLink("Populate Silhouette", "PopulateSearchMeta", "Curations", new { id = Model.PID }, new { @class = "" })
+            }
+            else
+            {
+                <span class="flex-1">@Model.Facet?.Title</span>
+            }
+        </div>
+
+        <div class="flex-row m-b-lg">
+            <span class="min-width-md">Components:</span>
+            <ul class="flex-1">
+                @foreach (var component in Model.CurationComponents)
+                {
+                    <li>@component.Component.Title </li>
+                }
+            </ul>
+        </div>
+
+        <div class="flex-row m-b-lg">
+            <span class="min-width-md">Description:</span>
+            <span class="flex-1">@Model.Description</span>
+        </div>
+
+        <div class="form-group-inline">
+            <label asp-for="@Model.OverlayText" class="min-width-md m-r-none"></label>
+            <input asp-for="@Model.OverlayText" class="max-width-xxxl" />
+            <span asp-validation-for="@Model.OverlayText"></span>
+        </div>
+
+        @for (int i = 0; i < Model.CuratedMedia.Count; i++)
+        {
+            <div class="form-group">
+                <div class="image-form">
+                    <div class="image">
+                        <img src="@Model.CuratedMedia[i].Variants.OrderBy(v => v.Width).First().ToFullPath(Model.OnBodyUrlDomain)" />
+                    </div>
+                    <div class="form">
+                        <input asp-for="@Model.CuratedMedia[i].Id" type="hidden" />
+
+                        <label asp-for="@Model.CuratedMedia[i].SortOrder"></label>
+                        <input asp-for="@Model.CuratedMedia[i].SortOrder" />
+
+                        <label asp-for="@Model.CuratedMedia[i].PLPSortOrder"></label>
+                        <input asp-for="@Model.CuratedMedia[i].PLPSortOrder" />
+
+                        <label asp-for="@Model.CuratedMedia[i].FitDescription"></label>
+                        <textarea asp-for="@Model.CuratedMedia[i].FitDescription"></textarea>
+
+                        <label asp-for="@Model.CuratedMedia[i].SizeDescription"></label>
+                        <textarea asp-for="@Model.CuratedMedia[i].SizeDescription"></textarea>
+                    </div>
+                </div>
+            </div>
+        }
+    </form>
+
+	<div class="flex-row m-b-xl">
+		<div class="flex-1">
+			<input class="btn" type="button" onclick='document.getElementById("EditCuration").submit()' value="Save" />
+		</div>
+		<div class="flex-1 text-right">
+			<form method="post" enctype="multipart/form-data" asp-controller="Curations" asp-action="Delete">
+				@Html.HiddenFor(m => m.PID)
+				<input class="btn btn-warn" type="submit" value="Delete Curation" />
+			</form>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,24 @@
+﻿@import '../vars.scss';
+
+@import 'utility';
+@import 'space';
+@import 'layout';
+@import 'table';
+@import 'navbar';
+@import 'card';
+@import 'tile';
+@import 'button';
+@import 'form';
+@import 'notifications';
+
+.bg-solid {
+    background-color: $color-navy;
+}
+
+.bg-light {
+    background-color: $color-white;
+}
+
+.avatar {
+    width: 20px;
+}

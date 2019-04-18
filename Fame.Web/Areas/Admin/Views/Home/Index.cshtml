@@ -1,0 +1,224 @@
+﻿@model Fame.Web.Areas.Admin.Models.WorkflowViewModel
+@{
+    ViewData["Title"] = "Product Catalogue";
+}
+
+<div class="admin-body">
+
+    <h3>Product Catalogue</h3>
+
+    <div class="tile-row">
+
+        <div class="tile">
+            <h4>1. Catalogue Import</h4>
+
+            <div class="tile-body">
+                Import products from Google Sheets into the product catalogue.
+            </div>
+
+            <div class="tile-footer">
+                @Html.ActionLink("Import", "Import", "Home", new { area = "Admin" }, new { @class = "btn btn-block" })
+                @Html.Partial("RelativeTime", Model.Workflow[Fame.Data.Models.WorkflowStep.ProductImport].TriggeredDateTime)
+            </div>
+        </div>
+
+        <div class="tile">
+            <h4>2. Search Index</h4>
+            <div class="tile-body">
+                Index product combinations including name, description and facet categorisation.
+            </div>
+            <div class="tile-footer">
+                @Html.ActionLink("Index", "ReIndex", "Home", new { area = "Admin" }, new { @class = "btn  btn-block " })
+                @Html.Partial("RelativeTime", Model.Workflow[Fame.Data.Models.WorkflowStep.SearchIndex].TriggeredDateTime)
+            </div>
+        </div>
+
+        <div class="tile">
+            <h4>Next Steps</h4>
+            <div class="tile-body">
+                <p><strong>Optional</strong>: Image Layering, Curations</p>
+                <p><strong>Mandatory</strong>: Spree Export</p>
+            </div>
+            <div class="tile-footer">
+            </div>
+        </div>
+
+    </div>
+
+    <h3>Image Layering</h3>
+    <div class="tile-row">
+
+        <div class="tile">
+            <h4>Prerequisites</h4>
+            <div class="tile-body">
+                <p><strong>Mandatory</strong>: Product Catalogue</p>
+                <p>Layering has no dependencies on curations.</p>
+            </div>
+        </div>
+
+        <div class="tile">
+            <h4>3. File Sync</h4>
+            <div class="tile-body">
+                File sync pulls the image layer assets from Dropbox and pushes them into amazon S3 ready for the layering.
+            </div>
+            <div class="tile-footer">
+                @if (Model is null || !Model.LayeringDropNames.Any())
+                {
+                    <p>
+                        Import Product catalogue before layering images.
+                    </p>
+                }
+                else
+                {
+                    <form asp-action="Trigger" method="post" class="form-group">
+                        <p>
+                            <select name="dropName" class="form-input">
+                                <option value="PleaseSelect">Please select one</option>
+                                @foreach (var dropName in Model.LayeringDropNames)
+                                {
+                                    <option value="@dropName">@dropName</option>
+                                }
+                            </select>
+                            <input type="hidden" name="mode" value="filesync" />
+                            <button type="submit" class="btn btn-block m-t-sm">Submit</button>
+                        </p>
+                    </form>
+                }
+
+                @Html.Partial("RelativeTime", Model.Workflow[Fame.Data.Models.WorkflowStep.FileSync].TriggeredDateTime)
+            </div>
+        </div>
+
+        <div class="tile">
+            <h4>4. Layering</h4>
+            <div class="tile-body">
+                <p>The layering process will generate all the CAD and Render images for customisations.</p>
+                <p>It is a potentially costly exercise (especially for renders) and should only be carried out once everything else has been completed.</p>
+            </div>
+            <div class="tile-footer">
+                @if (Model is null || !Model.LayeringDropNames.Any())
+                {
+                    <p>
+                        Import Product catalogue before layering images.
+                    </p>
+                }
+                else
+                {
+                    <form asp-action="Trigger" method="post" class="form-group">
+                        <p>
+                            <select name="dropName" class="form-input">
+                                <option value="PleaseSelect">Please select one</option>
+                                @foreach (var dropName in Model.LayeringDropNames)
+                                {
+                                    <option value="@dropName">@dropName</option>
+                                }
+                            </select>
+                            <input type="hidden" name="mode" value="layering" />
+                            <button type="submit" class="btn btn-block m-t-sm">Submit</button>
+                        </p>
+                    </form>
+                }
+                @Html.Partial("RelativeTime", Model.Workflow[Fame.Data.Models.WorkflowStep.Layering].TriggeredDateTime)
+            </div>
+        </div>
+
+    </div>
+
+    <h3>Curations</h3>
+    <div class="tile-row">
+
+        <div class="tile">
+            <h4>Prerequisites</h4>
+            <div class="tile-body">
+                <p><strong>Mandatory</strong>: Product Catalogue</p>
+                <p>Curations have no dependency on image layering.</p>
+            </div>
+            <div class="tile-footer">
+            </div>
+        </div>
+
+        <div class="tile">
+            <h4>5. Sync Curations</h4>
+            <div class="tile-body">
+                <p>Syncing Curations can be one of the most intensive processes due to the large image handling and reasizing requirements.</p>
+                <p>If there are a large number of new curation images then it may be worth increasing the size of the AWS instance prior to running.</p>
+            </div>
+            <div class="tile-footer">
+                @Html.ActionLink("Import", "CurationImport", "Home", new { area = "Admin" }, new { @class = "btn  btn-block " })
+                @Html.Partial("RelativeTime", Model.Workflow[Fame.Data.Models.WorkflowStep.CurationsImport].TriggeredDateTime)
+            </div>
+        </div>
+
+        <div class="tile">
+            <h4>6. Silhouette Data</h4>
+            <div class="tile-body">
+                <p>The silhouette data is generated from the search data and the silhouette/name/description and facets are assigned to the curations.</p>
+            </div>
+            <div class="tile-footer">
+                @Html.ActionLink("Load Data", "PopulateAllSearchMeta", "Home", new { area = "Admin" }, new { @class = "btn  btn-block " })
+                @Html.Partial("RelativeTime", Model.Workflow[Fame.Data.Models.WorkflowStep.SilhouetteData].TriggeredDateTime)
+            </div>
+        </div>
+
+    </div>
+
+    <h3>Spree Export</h3>
+    <div class="tile-row">
+
+        <div class="tile">
+            <h4>Prerequisites</h4>
+            <div class="tile-body">
+                Spree export requires all other workflows to be complete before running.
+                All Products need to be added, the search index needs to be completed, any new curations need to be imported and the silhouette data needs to be loaded.
+            </div>
+        </div>
+
+        <div class="tile">
+            <h4>7. Spree Export</h4>
+            <div class="tile-body">
+                <p>Spree import can take a little while if there are lots of new products or many new curations due to all the image resizing requirements.</p>
+            </div>
+            <div class="tile-footer">
+                @if (Model is null || !Model.SpreeDropNames.Any())
+                {
+                    <p>
+                        Import Product catalogue before syncing products with Spree.
+                    </p>
+                }
+                else
+                {
+                    <form asp-action="SpreeImport" method="post" class="form-group">
+                        <select name="dropName" class="form-input">
+                            <option value="PleaseSelect">Please select one</option>
+                            @foreach (var dropName in Model.SpreeDropNames)
+                            {
+                                <option value="@dropName">@dropName</option>
+                            }
+                        </select>
+                        <button type="submit" class="btn btn-block m-t-sm">Submit</button>
+                    </form>
+                }
+                @Html.Partial("RelativeTime", Model.Workflow[Fame.Data.Models.WorkflowStep.SpreeExport].TriggeredDateTime)
+            </div>
+        </div>
+
+        <div class="tile">
+            <h4>8. Reindex Spree Search</h4>
+            <div class="tile-body">
+                Once the Spree export is complete (look at Sidekiq queue in Fame admin) you will need to re-index the Spree search ("Big Red Button" in Fame admin).
+            </div>
+            <div class="tile-footer">
+            </div>
+        </div>
+
+    </div>
+
+    <p>
+        @Html.ActionLink("Delete Cache", "DeleteCache", "Home", new { area = "Admin" })
+    </p>
+
+    <p>
+        <a href="../../hangfire" target="_blank">Hangfire</a>
+    </p>
+
+</div>

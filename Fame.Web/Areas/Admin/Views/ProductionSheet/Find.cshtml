@@ -1,0 +1,23 @@
+﻿@model Fame.Web.Areas.Admin.Models.FindModel
+@{
+	ViewData["Title"] = "Find Production Sheet";
+}
+
+<div class="admin-body">
+    <h2>@ViewData["Title"]</h2>
+
+    <form method="get" asp-controller="ProductionSheet" asp-action="Index">
+
+        <div class="form-group-inline">
+            <label asp-for="@Model.PID" class="min-width-md m-r-none"></label>
+            <input asp-for="@Model.PID" class="max-width-xxxl" />
+            <span asp-validation-for="@Model.PID"></span>
+        </div>
+
+        <div class="flex-row">
+            <div class="flex-1">
+                <input class="btn" type="submit" value="Find" />
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,73 @@
+﻿$grid-width: 1440px;
+$gutter: 2.5%;
+$gutter-vertically: 2.5vw;
+$columns: 12;
+
+$page-padding: 5%;
+
+$grid-width-lg: 2400px;
+$grid-width-md: 1440px;
+$grid-width-sm: 1280px;
+$grid-width-full: initial;
+
+@mixin container {
+    max-width: $grid-width-lg;
+    width: 100% - 2*$page-padding;
+    margin: 0 auto;
+}
+
+@function span($c) {
+    @return calc(100% / 12 * #{$c} - 0.1px);
+}
+
+@function span-fixed($c, $width) {
+    @return $width / 12 * $c - 0.1px;
+}
+
+@mixin grid {
+    @include container;
+    width: calc(#{100% - 2*$page-padding} + #{$gutter});
+    display: flex;
+    flex-wrap: wrap;
+}
+
+@mixin grid-full-width {
+    width: 100%;
+}
+
+@mixin grid-column($number) {
+    width: span($number);
+    padding: 0 $gutter/2;
+}
+
+@mixin grid-column-fixed($number, $width) {
+    width: span($number);
+    max-width: span-fixed($number, $width);
+    padding: 0 $gutter/2;
+}
+
+@mixin grid-column-mw($number) {
+    min-width: span($number);
+    max-width: span($number);
+    padding: 0 $gutter/2;
+}
+
+@mixin grid-offset-margin-left($number) {
+    margin-left: span($number);
+}
+
+@mixin grid-offset-margin-right($number) {
+    margin-right: span($number);
+}
+
+@mixin grid-offset-padding-left($number) {
+    padding-left: span($number);
+}
+
+@mixin grid-offset-padding-right($number) {
+    padding-right: span($number);
+}
+
+@mixin grid-offset-padding-top($number) {
+    padding-top: span($number);
+}

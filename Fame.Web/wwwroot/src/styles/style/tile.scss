@@ -1,0 +1,41 @@
+﻿@import '../vars.scss';
+
+.tile-row {
+    display: flex;
+    max-width: 1200px;
+    margin-bottom: 20px;
+}
+
+.tile {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+    border: 1px solid $color-grey90;
+    align-items: stretch;
+
+    & + .tile {
+        margin-left: 50px;
+
+        &::before {
+            $nextImageSize: 24px;
+            content: "";
+            background: url(/img/next.png) no-repeat;
+            width: $nextImageSize;
+            height: $nextImageSize;
+            margin: 0px 0px $nextImageSize * -1 $nextImageSize * -2;
+            background-size: 60% auto;
+            top: 8px;
+            position: relative;
+        }
+    }
+
+    .tile-body {
+        flex-grow: 1;
+        margin-bottom: 20px;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        display: inline-block;
+    }
+}

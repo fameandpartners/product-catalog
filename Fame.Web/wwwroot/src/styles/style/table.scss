@@ -1,0 +1,95 @@
+﻿@import '../vars.scss';
+
+.table, table {
+	display: table;
+	border: 1px solid $color-grey90;
+	width: 100%;
+	border-collapse: collapse;
+	margin-top: $space-base * 2;
+
+	a.tr {
+		text-decoration: none;
+
+		&:hover {
+			background-color: $color-grey98;
+		}
+	}
+
+	.thead.tr, thead tr {
+		font-weight: 500;
+	}
+
+	.tr, tr {
+		display: table-row;
+		border-top: 1px solid $color-grey90;
+
+		.td, td {
+			display: table-cell;
+			padding: $space-base * 2 $space-base $space-base * 2 $space-base * 2;
+			vertical-align: middle;
+			text-align: left;
+
+			&.no-wrap {
+				white-space: nowrap;
+			}
+
+			img {
+				border: 1px solid $color-grey90;
+				max-width: 100px;
+				max-height: 100px;
+				background-color: $color-white;
+				display: inline-block;
+			}
+
+			&.percent-10 {
+				width: 10%;
+			}
+
+			&.percent-20 {
+				width: 20%;
+			}
+
+			&.percent-30 {
+				width: 30%;
+			}
+
+			&.percent-40 {
+				width: 40%;
+			}
+
+			&.percent-50 {
+				width: 50%;
+			}
+
+			&.percent-60 {
+				width: 60%;
+			}
+
+			&.percent-70 {
+				width: 70%;
+			}
+
+			&.percent-80 {
+				width: 80%;
+			}
+
+			&.percent-90 {
+				width: 90%;
+			}
+		}
+	}
+}
+
+ul.page-panel {
+    text-align: center;
+
+    li {
+        display: inline;
+        padding-right: $space-base;
+
+        a.selected {
+            background-color: $color-white;
+            color: $color-black;
+        }
+    }
+}

@@ -1,0 +1,13 @@
+﻿
+$phone: 320px;
+$phoneLarge: 425px; 
+$tablet: 568px;
+$tabletLarge: 768px;
+$desktopSmall: 1024px;
+$desktopMedium: 1440px;
+$desktopLarge: 1920px;
+$desktopExtraLarge: 2560px;
+$desktopUltraWide: 3440px;
+
+$breakpoints: (phone: $phone, phoneLarge: $phoneLarge, tablet: $tablet, tabletLarge: $tabletLarge, desktopSmall: $desktopSmall, desktopMedium: $desktopMedium, desktopLarge: $desktopLarge, desktopExtraLarge: $desktopExtraLarge, desktopUltraWide: $desktopUltraWide);
+@import "node_modules/include-media/dist/_include-media.scss";

@@ -1,0 +1,222 @@
+﻿@import '../vars.scss';
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+html {
+    overflow-y: scroll;
+}
+
+body {
+    @include text-style-body;
+    color: $color-copy;
+    background-color: $color-white;
+    margin: 0;
+    text-underline-position: under;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+html, body {
+    height: 100%;
+    max-height: 100%;
+}
+
+.h1,
+h1 {
+    @include text-style-h1;
+    margin: 0 0 3*$space-base;
+}
+
+.h2,
+h2 {
+    @include text-style-h2;
+    margin: 0 0 2*$space-base;
+}
+
+.h3,
+h3 {
+    @include text-style-h3;
+    margin: 0 0 2*$space-base;
+}
+
+.h4,
+h4 {
+    @include text-style-h4;
+    margin: 0 0 2*$space-base;
+}
+
+.text-secondary {
+    color: $color-copy-secondary;
+}
+
+a {
+	color: $color-copy;
+	text-decoration: underline;
+	@include text-style-inherit;
+	cursor: pointer;
+
+	&.no-underline {
+		text-decoration: none;
+	}
+
+	&:hover,
+	&:focus {
+		color: $color-black;
+		text-decoration: underline;
+	}
+
+	&.btn {
+		&:hover,
+		&:focus {
+			color: $color-white;
+			text-decoration: none;
+		}
+	}
+}
+
+.bold {
+	font-weight: 500;
+}
+
+svg, img, video {
+    display: block;
+    height: auto;
+    max-width: 100%;
+}
+
+p {
+    margin: 0 0 2*$space-base;
+}
+
+ul, ol, li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+:focus {
+    outline-color: transparent;
+    outline-style: none;
+}
+
+input:invalid {
+    box-shadow: none;
+}
+
+hr {
+    height: 0;
+    margin: 0;
+    border: none;
+    border-bottom: 1px solid $color-grey79;
+}
+
+.container {
+    @include container;
+}
+
+.admin-body {
+    margin: $space-base * 3;
+    width: 100%;
+}
+
+.container-center {
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.admin-container {
+    display: flex;
+    flex-direction: row;
+    min-height: 100%;
+}
+
+.ps-image-container {
+    @include grid;
+
+    .ps-image {
+        @include grid-column(6);
+    }
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.pull-right {
+    float: right;
+}
+
+.image-form {
+	margin-top: $space-base * 4;
+	display: flex;
+	flex-direction: row;
+
+	> div.image {
+		flex: 1;
+		max-width: 200px;
+	}
+
+	> div.form {
+		flex: 2;
+		padding-left: $space-base * 3;
+
+		input, textarea {
+			margin-bottom: $space-base;
+		}
+	}
+}
+
+.flex-row {
+	display: flex;
+}
+
+.flex-align-items-center {
+    align-items: center;
+}
+
+.flex-justify-center {
+    justify-content: center;
+}
+
+.flex-1 {
+	flex: 1;
+}
+
+.flex-2 {
+	flex: 2;
+}
+
+.plusImage {
+	display: inline-block;
+	height: 100px;
+	width: 70px;
+	background-color: $color-grey90;
+	vertical-align: top;
+	padding-top: 38px;
+	text-align: center;
+	font-size: xx-large;
+	color: $color-grey60;
+}
+
+.relativeTime {
+    margin-top: 20px;
+    display: block;
+    text-align: center;
+}

@@ -1,0 +1,30 @@
+﻿@import '../vars.scss';
+
+.btn {
+	@include text-style-navigation-item;
+	background-color: $color-black;
+	border: none;
+	color: $color-white;
+	padding: $space-base * 2;
+	text-decoration: none;
+	display: inline-block;
+
+	&.btn-link {
+		background-color: $color-transparent;
+		color: $color-black;
+	}
+
+	&.btn-warn {
+		background-color: $color-red;
+	}
+
+	&.btn-small {
+		padding: 4px 8px;
+		font-size: 12px;
+	}
+}
+
+.btn-block {
+    text-align: center;
+    width: 100%;
+}

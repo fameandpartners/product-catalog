@@ -1,0 +1,6 @@
+﻿@model DateTimeOffset?
+
+@if (Model.HasValue)
+{
+    <span class="relativeTime" datetime="@Model.Value.ToString("O")"></span>
+}

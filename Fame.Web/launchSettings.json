@@ -1,0 +1,10 @@
+﻿{
+  "profiles":  {
+    "fame-dev":  {
+      "executablePath":  "dotnet",
+      "commandLineArgs":  "watch run",
+      "launchBrowser": true,
+      "launchUrl": "http://localhost:5001",
+    }
+  }
+}

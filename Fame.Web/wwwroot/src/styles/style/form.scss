@@ -1,0 +1,63 @@
+﻿@import '../vars.scss';
+
+.form-group, .form-group-inline {
+    @include text-style-body;
+    margin-bottom: $space-base * 2;
+
+    &.form-group-inline {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: center;
+
+        > * {
+            margin-right: 20px;
+        }
+
+        label {
+            min-width: 100px;
+        }
+    }
+
+    input, textarea, select {
+        @include text-style-form-input;
+        display: block;
+        width: 100%;
+        border: 1px solid $color-grey90;
+        padding: $space-base $space-base * 2;
+
+        &.btn {
+            color: $color-white;
+        }
+    }
+}
+
+.field-validation-error {
+    color: $color-red;
+}
+
+.validation-summary-errors {
+    margin-bottom: $space-base * 2;
+}
+
+.text-danger {
+    color: $color-red;
+}
+
+.text-success {
+    color: $color-green;
+}
+
+.upload-btn-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+
+    input[type=file] {
+        font-size: 100px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        opacity: 0;
+    }
+}

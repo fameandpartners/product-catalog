@@ -1,0 +1,41 @@
+version: "3"
+services:
+    product_catalog:
+        build: .
+        ports: 
+          - "8080:80"
+        environment:
+            ConnectionStrings__FameConnection: "Data Source=ms-sqlserver;User Id=sa; Password=ReactN00b; Initial Catalog=Fame;Integrated Security=false;MultipleActiveResultSets=True;Persist Security Info=True;" 
+    ms-sqlserver:
+        image: "microsoft/mssql-server-linux"
+        ports:
+            - "21433:1433"
+        environment:
+            SA_PASSWORD: "ReactN00b"
+            ACCEPT_EULA: "Y"
+        volumes:
+            - ms-sqlserver-data:/var/opt/mssql
+    elasticsearch:  
+        image: docker.elastic.co/elasticsearch/elasticsearch:6.3.1
+        environment:
+            - discovery.type=single-node
+            - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+            - xpack.security.enabled=false
+            - xpack.watcher.enabled=false
+            - xpack.monitoring.enabled=false
+            - xpack.graph.enabled=false
+            - xpack.ml.enabled=false
+        ulimits:
+            memlock:
+                soft: -1
+                hard: -1
+        volumes:
+            - elasticsearch-data:/usr/share/elasticsearch/data
+        ports:
+            - 29200:9200
+            - 29300:9300
+volumes:
+        ms-sqlserver-data:
+            driver: local
+        elasticsearch-data:
+            driver: local

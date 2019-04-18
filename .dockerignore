@@ -1,0 +1,9 @@
+﻿.git
+*/node_modules
+node_modules
+bin/
+*/bin
+obj/
+*/obj
+.vs
+Dockerfile

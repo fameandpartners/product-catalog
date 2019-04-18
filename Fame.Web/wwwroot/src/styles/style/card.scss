@@ -1,0 +1,20 @@
+﻿@import '../vars.scss';
+
+.card {
+    $card-margin: $space-base * 3;
+    max-width: $phoneLarge;
+    min-width: $phone;
+    vertical-align: top;
+
+    > div {
+        margin: $card-margin $card-margin 0 $card-margin;
+
+        &.card-image {
+            margin: 0;
+        }
+
+        &:last-child {
+            margin-bottom: $card-margin;
+        }
+    }
+}

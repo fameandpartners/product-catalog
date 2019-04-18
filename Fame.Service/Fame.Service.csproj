@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <AssemblyName>Fame.Service</AssemblyName>
+    <RootNamespace>Fame.Service</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="4.2.2" />
+    <PackageReference Include="Autofac.Extras.AggregateService" Version="4.1.0" />
+    <PackageReference Include="AWSSDK.S3" Version="3.3.31" />
+    <PackageReference Include="Dropbox.Api" Version="4.9.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="2.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.1.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    <PackageReference Include="PagedList.Core" Version="1.17.4" />
+    <PackageReference Include="SixLabors.ImageSharp" Version="1.0.0-beta0004" />
+    <PackageReference Include="SixLabors.ImageSharp.Drawing" Version="1.0.0-beta0004" />
+    <PackageReference Include="System.Drawing.Common" Version="4.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Fame.Common\Fame.Common.csproj" />
+    <ProjectReference Include="..\Fame.Data\Fame.Data.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Clients\" />
+    <Folder Include="Clients\Interfaces\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Microsoft.AspNetCore.Mvc.Abstractions">
+      <HintPath>..\..\..\.nuget\packages\microsoft.aspnetcore.mvc.abstractions\2.1.1\lib\netstandard2.0\Microsoft.AspNetCore.Mvc.Abstractions.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>

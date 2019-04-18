@@ -1,0 +1,38 @@
+﻿@model Fame.Web.Models.Account.LoginViewModel
+@{
+    ViewData["Title"] = "Log In";
+}
+
+
+<div class="card bg-light">
+    <div class="card-image">
+        <img src="/img/bgadmin.jpg">
+    </div>
+    <div>
+        <h3>Admin Login</h3>
+    </div>
+    <div>
+        
+        <form asp-controller="Account" asp-action="Login" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
+            
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+            <div class="form-group">
+                <label asp-for="EmailAddress"></label>
+                <input asp-for="EmailAddress" class="form-input" />
+                <span asp-validation-for="EmailAddress" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="Password"></label>
+                <input asp-for="Password" class="form-input" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            
+            <button type="submit" class="btn btn-block">Login</button>
+            
+            @*<a class="btn btn-block" asp-controller="Account" asp-action="LoginExternal" asp-route-connection="google-oauth2" asp-route-returnurl="@ViewData["ReturnUrl"]">Login with Google</a>*@
+
+        </form>
+    </div>
+</div>

@@ -1,0 +1,697 @@
+{
+  "errors": [],
+  "warnings": [
+    "configuration\nThe 'mode' option has not been set, webpack will fallback to 'production' for this value. Set 'mode' option to 'development' or 'production' to enable defaults for each environment.\nYou can also set it to 'none' to disable any default behavior. Learn more: https://webpack.js.org/concepts/mode/"
+  ],
+  "version": "4.11.1",
+  "hash": "43d5281280dd8d785fdb",
+  "time": 1386,
+  "builtAt": 1529477155676,
+  "publicPath": "",
+  "outputPath": "C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\wwwroot\\dist",
+  "assetsByChunkName": {
+    "main": [
+      "main.css",
+      "main.js"
+    ]
+  },
+  "assets": [
+    {
+      "name": "main.css",
+      "size": 9566,
+      "chunks": [
+        0
+      ],
+      "chunkNames": [
+        "main"
+      ],
+      "emitted": true
+    },
+    {
+      "name": "main.js",
+      "size": 968,
+      "chunks": [
+        0
+      ],
+      "chunkNames": [
+        "main"
+      ],
+      "emitted": true
+    }
+  ],
+  "filteredAssets": 0,
+  "entrypoints": {
+    "main": {
+      "chunks": [
+        0
+      ],
+      "assets": [
+        "main.css",
+        "main.js"
+      ],
+      "children": {},
+      "childAssets": {}
+    }
+  },
+  "namedChunkGroups": {
+    "main": {
+      "chunks": [
+        0
+      ],
+      "assets": [
+        "main.css",
+        "main.js"
+      ],
+      "children": {},
+      "childAssets": {}
+    }
+  },
+  "chunks": [
+    {
+      "id": 0,
+      "rendered": true,
+      "initial": true,
+      "entry": true,
+      "size": 9650,
+      "names": [
+        "main"
+      ],
+      "files": [
+        "main.css",
+        "main.js"
+      ],
+      "hash": "e87993939890ac0e6781",
+      "siblings": [],
+      "parents": [],
+      "children": [],
+      "childrenByOrder": {},
+      "modules": [
+        {
+          "id": 0,
+          "identifier": "css C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\node_modules\\css-loader\\index.js!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\node_modules\\sass-loader\\lib\\loader.js!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\node_modules\\postcss-loader\\lib\\index.js!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\wwwroot\\src\\styles\\index.scss 0",
+          "name": "css ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./node_modules/postcss-loader/lib!./wwwroot/src/styles/index.scss",
+          "index": 2,
+          "index2": 0,
+          "size": 9565,
+          "built": false,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            0
+          ],
+          "issuer": "C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\node_modules\\mini-css-extract-plugin\\dist\\loader.js!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\node_modules\\css-loader\\index.js!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\node_modules\\sass-loader\\lib\\loader.js!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\node_modules\\postcss-loader\\lib\\index.js!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\wwwroot\\src\\styles\\index.scss",
+          "issuerId": 1,
+          "issuerName": "./wwwroot/src/styles/index.scss",
+          "issuerPath": [
+            {
+              "id": 2,
+              "identifier": "C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\node_modules\\babel-loader\\lib\\index.js!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\wwwroot\\src\\index.js",
+              "name": "./wwwroot/src/index.js",
+              "profile": {
+                "factory": 48,
+                "building": 451
+              }
+            },
+            {
+              "id": 1,
+              "identifier": "C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\node_modules\\mini-css-extract-plugin\\dist\\loader.js!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\node_modules\\css-loader\\index.js!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\node_modules\\sass-loader\\lib\\loader.js!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\node_modules\\postcss-loader\\lib\\index.js!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\wwwroot\\src\\styles\\index.scss",
+              "name": "./wwwroot/src/styles/index.scss",
+              "profile": {
+                "factory": 6,
+                "building": 849
+              }
+            }
+          ],
+          "profile": {
+            "factory": 0,
+            "building": 0
+          },
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "assets": [],
+          "reasons": [
+            {
+              "moduleId": 1,
+              "moduleIdentifier": "C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\node_modules\\mini-css-extract-plugin\\dist\\loader.js!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\node_modules\\css-loader\\index.js!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\node_modules\\sass-loader\\lib\\loader.js!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\node_modules\\postcss-loader\\lib\\index.js!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\wwwroot\\src\\styles\\index.scss",
+              "module": "./wwwroot/src/styles/index.scss",
+              "moduleName": "./wwwroot/src/styles/index.scss"
+            }
+          ],
+          "usedExports": true,
+          "providedExports": null,
+          "optimizationBailout": [
+            "ModuleConcatenation bailout: Module is not an ECMAScript module"
+          ],
+          "depth": 2
+        },
+        {
+          "id": 1,
+          "identifier": "C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\node_modules\\mini-css-extract-plugin\\dist\\loader.js!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\node_modules\\css-loader\\index.js!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\node_modules\\sass-loader\\lib\\loader.js!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\node_modules\\postcss-loader\\lib\\index.js!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\wwwroot\\src\\styles\\index.scss",
+          "name": "./wwwroot/src/styles/index.scss",
+          "index": 1,
+          "index2": 1,
+          "size": 39,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            0
+          ],
+          "issuer": "C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\node_modules\\babel-loader\\lib\\index.js!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\wwwroot\\src\\index.js",
+          "issuerId": 2,
+          "issuerName": "./wwwroot/src/index.js",
+          "issuerPath": [
+            {
+              "id": 2,
+              "identifier": "C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\node_modules\\babel-loader\\lib\\index.js!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\wwwroot\\src\\index.js",
+              "name": "./wwwroot/src/index.js",
+              "profile": {
+                "factory": 48,
+                "building": 451
+              }
+            }
+          ],
+          "profile": {
+            "factory": 6,
+            "building": 849
+          },
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "assets": [],
+          "reasons": [
+            {
+              "moduleId": 2,
+              "moduleIdentifier": "C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\node_modules\\babel-loader\\lib\\index.js!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\wwwroot\\src\\index.js",
+              "module": "./wwwroot/src/index.js",
+              "moduleName": "./wwwroot/src/index.js",
+              "type": "cjs require",
+              "userRequest": "./styles/index.scss",
+              "loc": "3:0-30"
+            }
+          ],
+          "usedExports": true,
+          "providedExports": null,
+          "optimizationBailout": [
+            "ModuleConcatenation bailout: Module is not an ECMAScript module"
+          ],
+          "depth": 1,
+          "source": "// extracted by mini-css-extract-plugin"
+        },
+        {
+          "id": 2,
+          "identifier": "C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\node_modules\\babel-loader\\lib\\index.js!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\wwwroot\\src\\index.js",
+          "name": "./wwwroot/src/index.js",
+          "index": 0,
+          "index2": 2,
+          "size": 46,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            0
+          ],
+          "issuer": null,
+          "issuerId": null,
+          "issuerName": null,
+          "issuerPath": null,
+          "profile": {
+            "factory": 48,
+            "building": 451
+          },
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "assets": [],
+          "reasons": [
+            {
+              "moduleId": null,
+              "moduleIdentifier": null,
+              "module": null,
+              "moduleName": null,
+              "type": "single entry",
+              "userRequest": "./wwwroot/src/index.js",
+              "loc": "main"
+            }
+          ],
+          "usedExports": true,
+          "providedExports": null,
+          "optimizationBailout": [
+            "ModuleConcatenation bailout: Module is not an ECMAScript module"
+          ],
+          "depth": 0,
+          "source": "\"use strict\";\n\nrequire(\"./styles/index.scss\");"
+        }
+      ],
+      "filteredModules": 0,
+      "origins": [
+        {
+          "module": "",
+          "moduleIdentifier": "",
+          "moduleName": "",
+          "loc": "main",
+          "request": "./wwwroot/src/index.js",
+          "reasons": []
+        }
+      ]
+    }
+  ],
+  "modules": [
+    {
+      "id": 0,
+      "identifier": "css C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\node_modules\\css-loader\\index.js!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\node_modules\\sass-loader\\lib\\loader.js!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\node_modules\\postcss-loader\\lib\\index.js!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\wwwroot\\src\\styles\\index.scss 0",
+      "name": "css ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./node_modules/postcss-loader/lib!./wwwroot/src/styles/index.scss",
+      "index": 2,
+      "index2": 0,
+      "size": 9565,
+      "built": false,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "issuer": "C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\node_modules\\mini-css-extract-plugin\\dist\\loader.js!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\node_modules\\css-loader\\index.js!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\node_modules\\sass-loader\\lib\\loader.js!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\node_modules\\postcss-loader\\lib\\index.js!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\wwwroot\\src\\styles\\index.scss",
+      "issuerId": 1,
+      "issuerName": "./wwwroot/src/styles/index.scss",
+      "issuerPath": [
+        {
+          "id": 2,
+          "identifier": "C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\node_modules\\babel-loader\\lib\\index.js!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\wwwroot\\src\\index.js",
+          "name": "./wwwroot/src/index.js",
+          "profile": {
+            "factory": 48,
+            "building": 451
+          }
+        },
+        {
+          "id": 1,
+          "identifier": "C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\node_modules\\mini-css-extract-plugin\\dist\\loader.js!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\node_modules\\css-loader\\index.js!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\node_modules\\sass-loader\\lib\\loader.js!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\node_modules\\postcss-loader\\lib\\index.js!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\wwwroot\\src\\styles\\index.scss",
+          "name": "./wwwroot/src/styles/index.scss",
+          "profile": {
+            "factory": 6,
+            "building": 849
+          }
+        }
+      ],
+      "profile": {
+        "factory": 0,
+        "building": 0
+      },
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "assets": [],
+      "reasons": [
+        {
+          "moduleId": 1,
+          "moduleIdentifier": "C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\node_modules\\mini-css-extract-plugin\\dist\\loader.js!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\node_modules\\css-loader\\index.js!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\node_modules\\sass-loader\\lib\\loader.js!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\node_modules\\postcss-loader\\lib\\index.js!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\wwwroot\\src\\styles\\index.scss",
+          "module": "./wwwroot/src/styles/index.scss",
+          "moduleName": "./wwwroot/src/styles/index.scss"
+        }
+      ],
+      "usedExports": true,
+      "providedExports": null,
+      "optimizationBailout": [
+        "ModuleConcatenation bailout: Module is not an ECMAScript module"
+      ],
+      "depth": 2
+    },
+    {
+      "id": 1,
+      "identifier": "C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\node_modules\\mini-css-extract-plugin\\dist\\loader.js!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\node_modules\\css-loader\\index.js!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\node_modules\\sass-loader\\lib\\loader.js!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\node_modules\\postcss-loader\\lib\\index.js!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\wwwroot\\src\\styles\\index.scss",
+      "name": "./wwwroot/src/styles/index.scss",
+      "index": 1,
+      "index2": 1,
+      "size": 39,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "issuer": "C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\node_modules\\babel-loader\\lib\\index.js!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\wwwroot\\src\\index.js",
+      "issuerId": 2,
+      "issuerName": "./wwwroot/src/index.js",
+      "issuerPath": [
+        {
+          "id": 2,
+          "identifier": "C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\node_modules\\babel-loader\\lib\\index.js!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\wwwroot\\src\\index.js",
+          "name": "./wwwroot/src/index.js",
+          "profile": {
+            "factory": 48,
+            "building": 451
+          }
+        }
+      ],
+      "profile": {
+        "factory": 6,
+        "building": 849
+      },
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "assets": [],
+      "reasons": [
+        {
+          "moduleId": 2,
+          "moduleIdentifier": "C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\node_modules\\babel-loader\\lib\\index.js!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\wwwroot\\src\\index.js",
+          "module": "./wwwroot/src/index.js",
+          "moduleName": "./wwwroot/src/index.js",
+          "type": "cjs require",
+          "userRequest": "./styles/index.scss",
+          "loc": "3:0-30"
+        }
+      ],
+      "usedExports": true,
+      "providedExports": null,
+      "optimizationBailout": [
+        "ModuleConcatenation bailout: Module is not an ECMAScript module"
+      ],
+      "depth": 1,
+      "source": "// extracted by mini-css-extract-plugin"
+    },
+    {
+      "id": 2,
+      "identifier": "C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\node_modules\\babel-loader\\lib\\index.js!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\wwwroot\\src\\index.js",
+      "name": "./wwwroot/src/index.js",
+      "index": 0,
+      "index2": 2,
+      "size": 46,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0
+      ],
+      "issuer": null,
+      "issuerId": null,
+      "issuerName": null,
+      "issuerPath": null,
+      "profile": {
+        "factory": 48,
+        "building": 451
+      },
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "assets": [],
+      "reasons": [
+        {
+          "moduleId": null,
+          "moduleIdentifier": null,
+          "module": null,
+          "moduleName": null,
+          "type": "single entry",
+          "userRequest": "./wwwroot/src/index.js",
+          "loc": "main"
+        }
+      ],
+      "usedExports": true,
+      "providedExports": null,
+      "optimizationBailout": [
+        "ModuleConcatenation bailout: Module is not an ECMAScript module"
+      ],
+      "depth": 0,
+      "source": "\"use strict\";\n\nrequire(\"./styles/index.scss\");"
+    }
+  ],
+  "filteredModules": 0,
+  "children": [
+    {
+      "errors": [],
+      "warnings": [],
+      "publicPath": "",
+      "outputPath": "C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\wwwroot\\dist",
+      "assetsByChunkName": {},
+      "assets": [],
+      "filteredAssets": 0,
+      "entrypoints": {
+        "mini-css-extract-plugin": {
+          "chunks": [
+            0
+          ],
+          "assets": [
+            "*"
+          ],
+          "children": {},
+          "childAssets": {}
+        }
+      },
+      "namedChunkGroups": {
+        "mini-css-extract-plugin": {
+          "chunks": [
+            0
+          ],
+          "assets": [
+            "*"
+          ],
+          "children": {},
+          "childAssets": {}
+        }
+      },
+      "chunks": [
+        {
+          "id": 0,
+          "rendered": true,
+          "initial": true,
+          "entry": true,
+          "size": 12580,
+          "names": [
+            "mini-css-extract-plugin"
+          ],
+          "files": [
+            "*"
+          ],
+          "hash": "df0235453ca4c0e75627",
+          "siblings": [],
+          "parents": [],
+          "children": [],
+          "childrenByOrder": {},
+          "modules": [
+            {
+              "id": 0,
+              "identifier": "C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\node_modules\\babel-loader\\lib\\index.js!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\node_modules\\css-loader\\lib\\css-base.js",
+              "name": "./node_modules/css-loader/lib/css-base.js",
+              "index": 1,
+              "index2": 0,
+              "size": 2278,
+              "cacheable": true,
+              "built": true,
+              "optional": false,
+              "prefetched": false,
+              "chunks": [
+                0
+              ],
+              "issuer": "C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\node_modules\\css-loader\\index.js!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\node_modules\\sass-loader\\lib\\loader.js!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\node_modules\\postcss-loader\\lib\\index.js!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\wwwroot\\src\\styles\\index.scss",
+              "issuerId": 1,
+              "issuerName": "./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./node_modules/postcss-loader/lib!./wwwroot/src/styles/index.scss",
+              "issuerPath": [
+                {
+                  "id": 1,
+                  "identifier": "C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\node_modules\\css-loader\\index.js!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\node_modules\\sass-loader\\lib\\loader.js!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\node_modules\\postcss-loader\\lib\\index.js!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\wwwroot\\src\\styles\\index.scss",
+                  "name": "./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./node_modules/postcss-loader/lib!./wwwroot/src/styles/index.scss",
+                  "profile": {
+                    "factory": 3,
+                    "building": 778
+                  }
+                }
+              ],
+              "profile": {
+                "factory": 1,
+                "building": 38
+              },
+              "failed": false,
+              "errors": 0,
+              "warnings": 0,
+              "assets": [],
+              "reasons": [
+                {
+                  "moduleId": 1,
+                  "moduleIdentifier": "C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\node_modules\\css-loader\\index.js!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\node_modules\\sass-loader\\lib\\loader.js!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\node_modules\\postcss-loader\\lib\\index.js!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\wwwroot\\src\\styles\\index.scss",
+                  "module": "./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./node_modules/postcss-loader/lib!./wwwroot/src/styles/index.scss",
+                  "moduleName": "./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./node_modules/postcss-loader/lib!./wwwroot/src/styles/index.scss",
+                  "type": "cjs require",
+                  "userRequest": "../../../node_modules/css-loader/lib/css-base.js",
+                  "loc": "1:27-86"
+                }
+              ],
+              "usedExports": true,
+              "providedExports": null,
+              "optimizationBailout": [
+                "ModuleConcatenation bailout: Module is not an ECMAScript module"
+              ],
+              "depth": 1,
+              "source": "\"use strict\";\n\n/*\n\tMIT License http://www.opensource.org/licenses/mit-license.php\n\tAuthor Tobias Koppers @sokra\n*/\n// css base code, injected by the css-loader\nmodule.exports = function (useSourceMap) {\n\tvar list = [];\n\n\t// return the list of modules as css string\n\tlist.toString = function toString() {\n\t\treturn this.map(function (item) {\n\t\t\tvar content = cssWithMappingToString(item, useSourceMap);\n\t\t\tif (item[2]) {\n\t\t\t\treturn \"@media \" + item[2] + \"{\" + content + \"}\";\n\t\t\t} else {\n\t\t\t\treturn content;\n\t\t\t}\n\t\t}).join(\"\");\n\t};\n\n\t// import a list of modules into the list\n\tlist.i = function (modules, mediaQuery) {\n\t\tif (typeof modules === \"string\") modules = [[null, modules, \"\"]];\n\t\tvar alreadyImportedModules = {};\n\t\tfor (var i = 0; i < this.length; i++) {\n\t\t\tvar id = this[i][0];\n\t\t\tif (typeof id === \"number\") alreadyImportedModules[id] = true;\n\t\t}\n\t\tfor (i = 0; i < modules.length; i++) {\n\t\t\tvar item = modules[i];\n\t\t\t// skip already imported module\n\t\t\t// this implementation is not 100% perfect for weird media query combinations\n\t\t\t//  when a module is imported multiple times with different media queries.\n\t\t\t//  I hope this will never occur (Hey this way we have smaller bundles)\n\t\t\tif (typeof item[0] !== \"number\" || !alreadyImportedModules[item[0]]) {\n\t\t\t\tif (mediaQuery && !item[2]) {\n\t\t\t\t\titem[2] = mediaQuery;\n\t\t\t\t} else if (mediaQuery) {\n\t\t\t\t\titem[2] = \"(\" + item[2] + \") and (\" + mediaQuery + \")\";\n\t\t\t\t}\n\t\t\t\tlist.push(item);\n\t\t\t}\n\t\t}\n\t};\n\treturn list;\n};\n\nfunction cssWithMappingToString(item, useSourceMap) {\n\tvar content = item[1] || '';\n\tvar cssMapping = item[3];\n\tif (!cssMapping) {\n\t\treturn content;\n\t}\n\n\tif (useSourceMap && typeof btoa === 'function') {\n\t\tvar sourceMapping = toComment(cssMapping);\n\t\tvar sourceURLs = cssMapping.sources.map(function (source) {\n\t\t\treturn '/*# sourceURL=' + cssMapping.sourceRoot + source + ' */';\n\t\t});\n\n\t\treturn [content].concat(sourceURLs).concat([sourceMapping]).join('\\n');\n\t}\n\n\treturn [content].join('\\n');\n}\n\n// Adapted from convert-source-map (MIT)\nfunction toComment(sourceMap) {\n\t// eslint-disable-next-line no-undef\n\tvar base64 = btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap))));\n\tvar data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;\n\n\treturn '/*# ' + data + ' */';\n}"
+            },
+            {
+              "id": 1,
+              "identifier": "C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\node_modules\\css-loader\\index.js!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\node_modules\\sass-loader\\lib\\loader.js!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\node_modules\\postcss-loader\\lib\\index.js!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\wwwroot\\src\\styles\\index.scss",
+              "name": "./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./node_modules/postcss-loader/lib!./wwwroot/src/styles/index.scss",
+              "index": 0,
+              "index2": 1,
+              "size": 10302,
+              "cacheable": true,
+              "built": true,
+              "optional": false,
+              "prefetched": false,
+              "chunks": [
+                0
+              ],
+              "issuer": null,
+              "issuerId": null,
+              "issuerName": null,
+              "issuerPath": null,
+              "profile": {
+                "factory": 3,
+                "building": 778
+              },
+              "failed": false,
+              "errors": 0,
+              "warnings": 0,
+              "assets": [],
+              "reasons": [
+                {
+                  "moduleId": null,
+                  "moduleIdentifier": null,
+                  "module": null,
+                  "moduleName": null,
+                  "type": "single entry",
+                  "userRequest": "!!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\node_modules\\css-loader\\index.js!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\node_modules\\sass-loader\\lib\\loader.js!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\node_modules\\postcss-loader\\lib\\index.js!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\wwwroot\\src\\styles\\index.scss",
+                  "loc": "mini-css-extract-plugin"
+                }
+              ],
+              "usedExports": true,
+              "providedExports": null,
+              "optimizationBailout": [
+                "ModuleConcatenation bailout: Module is not an ECMAScript module"
+              ],
+              "depth": 0,
+              "source": "exports = module.exports = require(\"../../../node_modules/css-loader/lib/css-base.js\")(false);\n// imports\n\n\n// module\nexports.push([module.id, \"html, body, div, span, applet, object, iframe,\\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\\na, abbr, acronym, address, big, cite, code,\\ndel, dfn, em, img, ins, kbd, q, s, samp,\\nsmall, strike, strong, sub, sup, tt, var,\\nb, u, i, center,\\ndl, dt, dd, ol, ul, li,\\nfieldset, form, label, legend,\\ntable, caption, tbody, tfoot, thead, tr, th, td,\\narticle, aside, canvas, details, embed,\\nfigure, figcaption, footer, header, hgroup,\\nmenu, nav, output, ruby, section, summary,\\ntime, mark, audio, video {\\n  margin: 0;\\n  padding: 0;\\n  border: 0;\\n  font-size: 100%;\\n  font: inherit;\\n  vertical-align: baseline; }\\n\\n/* HTML5 display-role reset for older browsers */\\narticle, aside, details, figcaption, figure,\\nfooter, header, hgroup, menu, nav, section {\\n  display: block; }\\n\\nbody {\\n  line-height: 1; }\\n\\nol, ul {\\n  list-style: none; }\\n\\nblockquote, q {\\n  quotes: none; }\\n\\nblockquote:before, blockquote:after,\\nq:before, q:after {\\n  content: '';\\n  content: none; }\\n\\ntable {\\n  border-collapse: collapse;\\n  border-spacing: 0; }\\n\\n.m-t-xxxs {\\n  margin-top: 1px !important; }\\n\\n.p-t-xxxs {\\n  padding-top: 1px !important; }\\n\\n.m-b-xxxs {\\n  margin-bottom: 1px !important; }\\n\\n.p-b-xxxs {\\n  padding-bottom: 1px !important; }\\n\\n.m-l-xxxs {\\n  margin-left: 1px !important; }\\n\\n.p-l-xxxs {\\n  padding-left: 1px !important; }\\n\\n.m-r-xxxs {\\n  margin-right: 1px !important; }\\n\\n.p-r-xxxs {\\n  padding-right: 1px !important; }\\n\\n.m-xxxs {\\n  margin: 1px !important; }\\n\\n.p-xxxs {\\n  padding: 1px !important; }\\n\\n.m-t-xxs {\\n  margin-top: 2px !important; }\\n\\n.p-t-xxs {\\n  padding-top: 2px !important; }\\n\\n.m-b-xxs {\\n  margin-bottom: 2px !important; }\\n\\n.p-b-xxs {\\n  padding-bottom: 2px !important; }\\n\\n.m-l-xxs {\\n  margin-left: 2px !important; }\\n\\n.p-l-xxs {\\n  padding-left: 2px !important; }\\n\\n.m-r-xxs {\\n  margin-right: 2px !important; }\\n\\n.p-r-xxs {\\n  padding-right: 2px !important; }\\n\\n.m-xxs {\\n  margin: 2px !important; }\\n\\n.p-xxs {\\n  padding: 2px !important; }\\n\\n.m-t-xs {\\n  margin-top: 4px !important; }\\n\\n.p-t-xs {\\n  padding-top: 4px !important; }\\n\\n.m-b-xs {\\n  margin-bottom: 4px !important; }\\n\\n.p-b-xs {\\n  padding-bottom: 4px !important; }\\n\\n.m-l-xs {\\n  margin-left: 4px !important; }\\n\\n.p-l-xs {\\n  padding-left: 4px !important; }\\n\\n.m-r-xs {\\n  margin-right: 4px !important; }\\n\\n.p-r-xs {\\n  padding-right: 4px !important; }\\n\\n.m-xs {\\n  margin: 4px !important; }\\n\\n.p-xs {\\n  padding: 4px !important; }\\n\\n.m-t-sm {\\n  margin-top: 8px !important; }\\n\\n.p-t-sm {\\n  padding-top: 8px !important; }\\n\\n.m-b-sm {\\n  margin-bottom: 8px !important; }\\n\\n.p-b-sm {\\n  padding-bottom: 8px !important; }\\n\\n.m-l-sm {\\n  margin-left: 8px !important; }\\n\\n.p-l-sm {\\n  padding-left: 8px !important; }\\n\\n.m-r-sm {\\n  margin-right: 8px !important; }\\n\\n.p-r-sm {\\n  padding-right: 8px !important; }\\n\\n.m-sm {\\n  margin: 8px !important; }\\n\\n.p-sm {\\n  padding: 8px !important; }\\n\\n.m-t-md {\\n  margin-top: 16px !important; }\\n\\n.p-t-md {\\n  padding-top: 16px !important; }\\n\\n.m-b-md {\\n  margin-bottom: 16px !important; }\\n\\n.p-b-md {\\n  padding-bottom: 16px !important; }\\n\\n.m-l-md {\\n  margin-left: 16px !important; }\\n\\n.p-l-md {\\n  padding-left: 16px !important; }\\n\\n.m-r-md {\\n  margin-right: 16px !important; }\\n\\n.p-r-md {\\n  padding-right: 16px !important; }\\n\\n.m-md {\\n  margin: 16px !important; }\\n\\n.p-md {\\n  padding: 16px !important; }\\n\\n.m-t-lg {\\n  margin-top: 24px !important; }\\n\\n.p-t-lg {\\n  padding-top: 24px !important; }\\n\\n.m-b-lg {\\n  margin-bottom: 24px !important; }\\n\\n.p-b-lg {\\n  padding-bottom: 24px !important; }\\n\\n.m-l-lg {\\n  margin-left: 24px !important; }\\n\\n.p-l-lg {\\n  padding-left: 24px !important; }\\n\\n.m-r-lg {\\n  margin-right: 24px !important; }\\n\\n.p-r-lg {\\n  padding-right: 24px !important; }\\n\\n.m-lg {\\n  margin: 24px !important; }\\n\\n.p-lg {\\n  padding: 24px !important; }\\n\\n.m-t-xl {\\n  margin-top: 32px !important; }\\n\\n.p-t-xl {\\n  padding-top: 32px !important; }\\n\\n.m-b-xl {\\n  margin-bottom: 32px !important; }\\n\\n.p-b-xl {\\n  padding-bottom: 32px !important; }\\n\\n.m-l-xl {\\n  margin-left: 32px !important; }\\n\\n.p-l-xl {\\n  padding-left: 32px !important; }\\n\\n.m-r-xl {\\n  margin-right: 32px !important; }\\n\\n.p-r-xl {\\n  padding-right: 32px !important; }\\n\\n.m-xl {\\n  margin: 32px !important; }\\n\\n.p-xl {\\n  padding: 32px !important; }\\n\\n.m-t-xxl {\\n  margin-top: 40px !important; }\\n\\n.p-t-xxl {\\n  padding-top: 40px !important; }\\n\\n.m-b-xxl {\\n  margin-bottom: 40px !important; }\\n\\n.p-b-xxl {\\n  padding-bottom: 40px !important; }\\n\\n.m-l-xxl {\\n  margin-left: 40px !important; }\\n\\n.p-l-xxl {\\n  padding-left: 40px !important; }\\n\\n.m-r-xxl {\\n  margin-right: 40px !important; }\\n\\n.p-r-xxl {\\n  padding-right: 40px !important; }\\n\\n.m-xxl {\\n  margin: 40px !important; }\\n\\n.p-xxl {\\n  padding: 40px !important; }\\n\\n.m-t-xxxl {\\n  margin-top: 40px !important; }\\n\\n.p-t-xxxl {\\n  padding-top: 40px !important; }\\n\\n.m-b-xxxl {\\n  margin-bottom: 40px !important; }\\n\\n.p-b-xxxl {\\n  padding-bottom: 40px !important; }\\n\\n.m-l-xxxl {\\n  margin-left: 40px !important; }\\n\\n.p-l-xxxl {\\n  padding-left: 40px !important; }\\n\\n.m-r-xxxl {\\n  margin-right: 40px !important; }\\n\\n.p-r-xxxl {\\n  padding-right: 40px !important; }\\n\\n.m-xxxl {\\n  margin: 40px !important; }\\n\\n.p-xxxl {\\n  padding: 40px !important; }\\n\\n.m-t-xxxxl {\\n  margin-top: 48px !important; }\\n\\n.p-t-xxxxl {\\n  padding-top: 48px !important; }\\n\\n.m-b-xxxxl {\\n  margin-bottom: 48px !important; }\\n\\n.p-b-xxxxl {\\n  padding-bottom: 48px !important; }\\n\\n.m-l-xxxxl {\\n  margin-left: 48px !important; }\\n\\n.p-l-xxxxl {\\n  padding-left: 48px !important; }\\n\\n.m-r-xxxxl {\\n  margin-right: 48px !important; }\\n\\n.p-r-xxxxl {\\n  padding-right: 48px !important; }\\n\\n.m-xxxxl {\\n  margin: 48px !important; }\\n\\n.p-xxxxl {\\n  padding: 48px !important; }\\n\\n*,\\n*:before,\\n*:after {\\n  box-sizing: border-box; }\\n\\nhtml {\\n  overflow-y: scroll; }\\n\\nbody {\\n  font-family: \\\"brandon-grotesque\\\", brandon-grotesque, sans-serif;\\n  font-size: 16px;\\n  line-height: 24px;\\n  letter-spacing: 0.5px;\\n  font-weight: normal;\\n  color: #000;\\n  color: #333;\\n  background-color: #FFF;\\n  margin: 0;\\n  text-underline-position: under;\\n  -webkit-font-smoothing: antialiased;\\n  -moz-osx-font-smoothing: grayscale; }\\n\\nhtml, body {\\n  height: 100%;\\n  max-height: 100%; }\\n\\n.h1,\\nh1 {\\n  font-family: \\\"Neuzeit Grotesk\\\", \\\"neuzeit-grotesk\\\", neuzeit-grotesk, sans-serif;\\n  font-size: 32px;\\n  font-weight: 300;\\n  line-height: 40px;\\n  letter-spacing: 0.5px;\\n  color: #000;\\n  margin: 0 0 24px; }\\n\\n.h2,\\nh2 {\\n  font-family: \\\"Neuzeit Grotesk\\\", \\\"neuzeit-grotesk\\\", neuzeit-grotesk, sans-serif;\\n  font-size: 28px;\\n  font-weight: 300;\\n  line-height: 40px;\\n  letter-spacing: 0.5px;\\n  color: #000;\\n  margin: 0 0 16px; }\\n\\n.h3,\\nh3 {\\n  font-family: \\\"Neuzeit Grotesk\\\", \\\"neuzeit-grotesk\\\", neuzeit-grotesk, sans-serif;\\n  font-size: 28px;\\n  font-weight: normal;\\n  line-height: 40px;\\n  letter-spacing: 0.5px;\\n  color: #000;\\n  margin: 0 0 16px; }\\n\\n.h4,\\nh4 {\\n  font-family: \\\"Neuzeit Grotesk\\\", \\\"neuzeit-grotesk\\\", neuzeit-grotesk, sans-serif;\\n  font-size: 20px;\\n  line-height: 32px;\\n  font-weight: normal;\\n  letter-spacing: 0.4px;\\n  color: #000;\\n  margin: 0 0 16px; }\\n\\n.text-secondary {\\n  color: #cacaca; }\\n\\na {\\n  color: #333;\\n  text-decoration: underline;\\n  font-weight: inherit;\\n  font-size: inherit;\\n  line-height: inherit;\\n  cursor: pointer; }\\n  a.no-underline {\\n    text-decoration: none; }\\n  a:hover, a:focus {\\n    color: #000;\\n    text-decoration: underline; }\\n\\nsvg, img, video {\\n  display: block;\\n  height: auto;\\n  max-width: 100%; }\\n\\np {\\n  margin: 0 0 16px; }\\n\\nul, ol, li {\\n  margin: 0;\\n  padding: 0;\\n  list-style: none; }\\n\\n:focus {\\n  outline-color: transparent;\\n  outline-style: none; }\\n\\ninput:invalid {\\n  box-shadow: none; }\\n\\nhr {\\n  height: 0;\\n  margin: 0;\\n  border: none;\\n  border-bottom: 1px solid #cacaca; }\\n\\n.container {\\n  max-width: 2400px;\\n  width: 90%;\\n  margin: 0 auto; }\\n\\n.container-center {\\n  display: flex;\\n  height: 100%;\\n  justify-content: center;\\n  align-items: center; }\\n\\n.login-container {\\n  display: flex;\\n  flex-direction: column;\\n  justify-content: center;\\n  align-items: center; }\\n\\n.navbar-container {\\n  border-bottom: 1px solid #cacaca;\\n  height: 56px; }\\n  .navbar-container .navbar {\\n    max-width: 2400px;\\n    width: 90%;\\n    margin: 0 auto;\\n    display: flex;\\n    justify-content: space-between;\\n    height: 100%; }\\n    .navbar-container .navbar section.navbar-section {\\n      display: flex;\\n      justify-content: center;\\n      align-items: center;\\n      height: 100%; }\\n      .navbar-container .navbar section.navbar-section .navbar-brand {\\n        margin-right: 32px; }\\n\\n.card {\\n  max-width: 425px;\\n  min-width: 320px; }\\n  .card > div {\\n    margin: 24px 24px 0 24px; }\\n    .card > div.card-image {\\n      margin: 0; }\\n    .card > div:last-child {\\n      margin-bottom: 24px; }\\n\\n.btn {\\n  font-family: \\\"brandon-grotesque\\\", brandon-grotesque, sans-serif;\\n  font-size: 14px;\\n  line-height: 16px;\\n  letter-spacing: 0.5px;\\n  color: #000;\\n  font-weight: normal;\\n  background-color: #000;\\n  border: none;\\n  color: #FFF;\\n  padding: 16px; }\\n  .btn.btn-link {\\n    background-color: transparent;\\n    color: #000; }\\n\\n.btn-block {\\n  width: 100%; }\\n\\n.form-group {\\n  font-family: \\\"brandon-grotesque\\\", brandon-grotesque, sans-serif;\\n  font-size: 16px;\\n  line-height: 24px;\\n  letter-spacing: 0.5px;\\n  font-weight: normal;\\n  color: #000;\\n  margin-bottom: 16px; }\\n  .form-group input {\\n    font-family: \\\"brandon-grotesque\\\", brandon-grotesque, sans-serif;\\n    font-size: 14px;\\n    line-height: 24px;\\n    letter-spacing: 0.5px;\\n    color: #000;\\n    font-weight: 300;\\n    display: block;\\n    width: 100%;\\n    border: 1px solid #e7e7e7;\\n    padding: 8px 16px; }\\n\\n.validation-summary-errors {\\n  margin-bottom: 16px; }\\n\\n.text-danger {\\n  color: #9c3248; }\\n\\n.bg-solid {\\n  background-color: #0B1835; }\\n\\n.bg-light {\\n  background-color: #FFF; }\\n\\n.avatar {\\n  width: 30px; }\\n\", \"\"]);\n\n// exports\n"
+            }
+          ],
+          "filteredModules": 0,
+          "origins": [
+            {
+              "module": "",
+              "moduleIdentifier": "",
+              "moduleName": "",
+              "loc": "mini-css-extract-plugin",
+              "request": "!!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\node_modules\\css-loader\\index.js!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\node_modules\\sass-loader\\lib\\loader.js!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\node_modules\\postcss-loader\\lib\\index.js!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\wwwroot\\src\\styles\\index.scss",
+              "reasons": []
+            }
+          ]
+        }
+      ],
+      "modules": [
+        {
+          "id": 0,
+          "identifier": "C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\node_modules\\babel-loader\\lib\\index.js!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\node_modules\\css-loader\\lib\\css-base.js",
+          "name": "./node_modules/css-loader/lib/css-base.js",
+          "index": 1,
+          "index2": 0,
+          "size": 2278,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            0
+          ],
+          "issuer": "C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\node_modules\\css-loader\\index.js!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\node_modules\\sass-loader\\lib\\loader.js!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\node_modules\\postcss-loader\\lib\\index.js!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\wwwroot\\src\\styles\\index.scss",
+          "issuerId": 1,
+          "issuerName": "./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./node_modules/postcss-loader/lib!./wwwroot/src/styles/index.scss",
+          "issuerPath": [
+            {
+              "id": 1,
+              "identifier": "C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\node_modules\\css-loader\\index.js!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\node_modules\\sass-loader\\lib\\loader.js!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\node_modules\\postcss-loader\\lib\\index.js!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\wwwroot\\src\\styles\\index.scss",
+              "name": "./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./node_modules/postcss-loader/lib!./wwwroot/src/styles/index.scss",
+              "profile": {
+                "factory": 3,
+                "building": 778
+              }
+            }
+          ],
+          "profile": {
+            "factory": 1,
+            "building": 38
+          },
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "assets": [],
+          "reasons": [
+            {
+              "moduleId": 1,
+              "moduleIdentifier": "C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\node_modules\\css-loader\\index.js!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\node_modules\\sass-loader\\lib\\loader.js!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\node_modules\\postcss-loader\\lib\\index.js!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\wwwroot\\src\\styles\\index.scss",
+              "module": "./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./node_modules/postcss-loader/lib!./wwwroot/src/styles/index.scss",
+              "moduleName": "./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./node_modules/postcss-loader/lib!./wwwroot/src/styles/index.scss",
+              "type": "cjs require",
+              "userRequest": "../../../node_modules/css-loader/lib/css-base.js",
+              "loc": "1:27-86"
+            }
+          ],
+          "usedExports": true,
+          "providedExports": null,
+          "optimizationBailout": [
+            "ModuleConcatenation bailout: Module is not an ECMAScript module"
+          ],
+          "depth": 1,
+          "source": "\"use strict\";\n\n/*\n\tMIT License http://www.opensource.org/licenses/mit-license.php\n\tAuthor Tobias Koppers @sokra\n*/\n// css base code, injected by the css-loader\nmodule.exports = function (useSourceMap) {\n\tvar list = [];\n\n\t// return the list of modules as css string\n\tlist.toString = function toString() {\n\t\treturn this.map(function (item) {\n\t\t\tvar content = cssWithMappingToString(item, useSourceMap);\n\t\t\tif (item[2]) {\n\t\t\t\treturn \"@media \" + item[2] + \"{\" + content + \"}\";\n\t\t\t} else {\n\t\t\t\treturn content;\n\t\t\t}\n\t\t}).join(\"\");\n\t};\n\n\t// import a list of modules into the list\n\tlist.i = function (modules, mediaQuery) {\n\t\tif (typeof modules === \"string\") modules = [[null, modules, \"\"]];\n\t\tvar alreadyImportedModules = {};\n\t\tfor (var i = 0; i < this.length; i++) {\n\t\t\tvar id = this[i][0];\n\t\t\tif (typeof id === \"number\") alreadyImportedModules[id] = true;\n\t\t}\n\t\tfor (i = 0; i < modules.length; i++) {\n\t\t\tvar item = modules[i];\n\t\t\t// skip already imported module\n\t\t\t// this implementation is not 100% perfect for weird media query combinations\n\t\t\t//  when a module is imported multiple times with different media queries.\n\t\t\t//  I hope this will never occur (Hey this way we have smaller bundles)\n\t\t\tif (typeof item[0] !== \"number\" || !alreadyImportedModules[item[0]]) {\n\t\t\t\tif (mediaQuery && !item[2]) {\n\t\t\t\t\titem[2] = mediaQuery;\n\t\t\t\t} else if (mediaQuery) {\n\t\t\t\t\titem[2] = \"(\" + item[2] + \") and (\" + mediaQuery + \")\";\n\t\t\t\t}\n\t\t\t\tlist.push(item);\n\t\t\t}\n\t\t}\n\t};\n\treturn list;\n};\n\nfunction cssWithMappingToString(item, useSourceMap) {\n\tvar content = item[1] || '';\n\tvar cssMapping = item[3];\n\tif (!cssMapping) {\n\t\treturn content;\n\t}\n\n\tif (useSourceMap && typeof btoa === 'function') {\n\t\tvar sourceMapping = toComment(cssMapping);\n\t\tvar sourceURLs = cssMapping.sources.map(function (source) {\n\t\t\treturn '/*# sourceURL=' + cssMapping.sourceRoot + source + ' */';\n\t\t});\n\n\t\treturn [content].concat(sourceURLs).concat([sourceMapping]).join('\\n');\n\t}\n\n\treturn [content].join('\\n');\n}\n\n// Adapted from convert-source-map (MIT)\nfunction toComment(sourceMap) {\n\t// eslint-disable-next-line no-undef\n\tvar base64 = btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap))));\n\tvar data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;\n\n\treturn '/*# ' + data + ' */';\n}"
+        },
+        {
+          "id": 1,
+          "identifier": "C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\node_modules\\css-loader\\index.js!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\node_modules\\sass-loader\\lib\\loader.js!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\node_modules\\postcss-loader\\lib\\index.js!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\wwwroot\\src\\styles\\index.scss",
+          "name": "./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./node_modules/postcss-loader/lib!./wwwroot/src/styles/index.scss",
+          "index": 0,
+          "index2": 1,
+          "size": 10302,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            0
+          ],
+          "issuer": null,
+          "issuerId": null,
+          "issuerName": null,
+          "issuerPath": null,
+          "profile": {
+            "factory": 3,
+            "building": 778
+          },
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "assets": [],
+          "reasons": [
+            {
+              "moduleId": null,
+              "moduleIdentifier": null,
+              "module": null,
+              "moduleName": null,
+              "type": "single entry",
+              "userRequest": "!!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\node_modules\\css-loader\\index.js!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\node_modules\\sass-loader\\lib\\loader.js!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\node_modules\\postcss-loader\\lib\\index.js!C:\\Users\\Gavin\\source\\product-catalog\\Fame.Web\\wwwroot\\src\\styles\\index.scss",
+              "loc": "mini-css-extract-plugin"
+            }
+          ],
+          "usedExports": true,
+          "providedExports": null,
+          "optimizationBailout": [
+            "ModuleConcatenation bailout: Module is not an ECMAScript module"
+          ],
+          "depth": 0,
+          "source": "exports = module.exports = require(\"../../../node_modules/css-loader/lib/css-base.js\")(false);\n// imports\n\n\n// module\nexports.push([module.id, \"html, body, div, span, applet, object, iframe,\\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\\na, abbr, acronym, address, big, cite, code,\\ndel, dfn, em, img, ins, kbd, q, s, samp,\\nsmall, strike, strong, sub, sup, tt, var,\\nb, u, i, center,\\ndl, dt, dd, ol, ul, li,\\nfieldset, form, label, legend,\\ntable, caption, tbody, tfoot, thead, tr, th, td,\\narticle, aside, canvas, details, embed,\\nfigure, figcaption, footer, header, hgroup,\\nmenu, nav, output, ruby, section, summary,\\ntime, mark, audio, video {\\n  margin: 0;\\n  padding: 0;\\n  border: 0;\\n  font-size: 100%;\\n  font: inherit;\\n  vertical-align: baseline; }\\n\\n/* HTML5 display-role reset for older browsers */\\narticle, aside, details, figcaption, figure,\\nfooter, header, hgroup, menu, nav, section {\\n  display: block; }\\n\\nbody {\\n  line-height: 1; }\\n\\nol, ul {\\n  list-style: none; }\\n\\nblockquote, q {\\n  quotes: none; }\\n\\nblockquote:before, blockquote:after,\\nq:before, q:after {\\n  content: '';\\n  content: none; }\\n\\ntable {\\n  border-collapse: collapse;\\n  border-spacing: 0; }\\n\\n.m-t-xxxs {\\n  margin-top: 1px !important; }\\n\\n.p-t-xxxs {\\n  padding-top: 1px !important; }\\n\\n.m-b-xxxs {\\n  margin-bottom: 1px !important; }\\n\\n.p-b-xxxs {\\n  padding-bottom: 1px !important; }\\n\\n.m-l-xxxs {\\n  margin-left: 1px !important; }\\n\\n.p-l-xxxs {\\n  padding-left: 1px !important; }\\n\\n.m-r-xxxs {\\n  margin-right: 1px !important; }\\n\\n.p-r-xxxs {\\n  padding-right: 1px !important; }\\n\\n.m-xxxs {\\n  margin: 1px !important; }\\n\\n.p-xxxs {\\n  padding: 1px !important; }\\n\\n.m-t-xxs {\\n  margin-top: 2px !important; }\\n\\n.p-t-xxs {\\n  padding-top: 2px !important; }\\n\\n.m-b-xxs {\\n  margin-bottom: 2px !important; }\\n\\n.p-b-xxs {\\n  padding-bottom: 2px !important; }\\n\\n.m-l-xxs {\\n  margin-left: 2px !important; }\\n\\n.p-l-xxs {\\n  padding-left: 2px !important; }\\n\\n.m-r-xxs {\\n  margin-right: 2px !important; }\\n\\n.p-r-xxs {\\n  padding-right: 2px !important; }\\n\\n.m-xxs {\\n  margin: 2px !important; }\\n\\n.p-xxs {\\n  padding: 2px !important; }\\n\\n.m-t-xs {\\n  margin-top: 4px !important; }\\n\\n.p-t-xs {\\n  padding-top: 4px !important; }\\n\\n.m-b-xs {\\n  margin-bottom: 4px !important; }\\n\\n.p-b-xs {\\n  padding-bottom: 4px !important; }\\n\\n.m-l-xs {\\n  margin-left: 4px !important; }\\n\\n.p-l-xs {\\n  padding-left: 4px !important; }\\n\\n.m-r-xs {\\n  margin-right: 4px !important; }\\n\\n.p-r-xs {\\n  padding-right: 4px !important; }\\n\\n.m-xs {\\n  margin: 4px !important; }\\n\\n.p-xs {\\n  padding: 4px !important; }\\n\\n.m-t-sm {\\n  margin-top: 8px !important; }\\n\\n.p-t-sm {\\n  padding-top: 8px !important; }\\n\\n.m-b-sm {\\n  margin-bottom: 8px !important; }\\n\\n.p-b-sm {\\n  padding-bottom: 8px !important; }\\n\\n.m-l-sm {\\n  margin-left: 8px !important; }\\n\\n.p-l-sm {\\n  padding-left: 8px !important; }\\n\\n.m-r-sm {\\n  margin-right: 8px !important; }\\n\\n.p-r-sm {\\n  padding-right: 8px !important; }\\n\\n.m-sm {\\n  margin: 8px !important; }\\n\\n.p-sm {\\n  padding: 8px !important; }\\n\\n.m-t-md {\\n  margin-top: 16px !important; }\\n\\n.p-t-md {\\n  padding-top: 16px !important; }\\n\\n.m-b-md {\\n  margin-bottom: 16px !important; }\\n\\n.p-b-md {\\n  padding-bottom: 16px !important; }\\n\\n.m-l-md {\\n  margin-left: 16px !important; }\\n\\n.p-l-md {\\n  padding-left: 16px !important; }\\n\\n.m-r-md {\\n  margin-right: 16px !important; }\\n\\n.p-r-md {\\n  padding-right: 16px !important; }\\n\\n.m-md {\\n  margin: 16px !important; }\\n\\n.p-md {\\n  padding: 16px !important; }\\n\\n.m-t-lg {\\n  margin-top: 24px !important; }\\n\\n.p-t-lg {\\n  padding-top: 24px !important; }\\n\\n.m-b-lg {\\n  margin-bottom: 24px !important; }\\n\\n.p-b-lg {\\n  padding-bottom: 24px !important; }\\n\\n.m-l-lg {\\n  margin-left: 24px !important; }\\n\\n.p-l-lg {\\n  padding-left: 24px !important; }\\n\\n.m-r-lg {\\n  margin-right: 24px !important; }\\n\\n.p-r-lg {\\n  padding-right: 24px !important; }\\n\\n.m-lg {\\n  margin: 24px !important; }\\n\\n.p-lg {\\n  padding: 24px !important; }\\n\\n.m-t-xl {\\n  margin-top: 32px !important; }\\n\\n.p-t-xl {\\n  padding-top: 32px !important; }\\n\\n.m-b-xl {\\n  margin-bottom: 32px !important; }\\n\\n.p-b-xl {\\n  padding-bottom: 32px !important; }\\n\\n.m-l-xl {\\n  margin-left: 32px !important; }\\n\\n.p-l-xl {\\n  padding-left: 32px !important; }\\n\\n.m-r-xl {\\n  margin-right: 32px !important; }\\n\\n.p-r-xl {\\n  padding-right: 32px !important; }\\n\\n.m-xl {\\n  margin: 32px !important; }\\n\\n.p-xl {\\n  padding: 32px !important; }\\n\\n.m-t-xxl {\\n  margin-top: 40px !important; }\\n\\n.p-t-xxl {\\n  padding-top: 40px !important; }\\n\\n.m-b-xxl {\\n  margin-bottom: 40px !important; }\\n\\n.p-b-xxl {\\n  padding-bottom: 40px !important; }\\n\\n.m-l-xxl {\\n  margin-left: 40px !important; }\\n\\n.p-l-xxl {\\n  padding-left: 40px !important; }\\n\\n.m-r-xxl {\\n  margin-right: 40px !important; }\\n\\n.p-r-xxl {\\n  padding-right: 40px !important; }\\n\\n.m-xxl {\\n  margin: 40px !important; }\\n\\n.p-xxl {\\n  padding: 40px !important; }\\n\\n.m-t-xxxl {\\n  margin-top: 40px !important; }\\n\\n.p-t-xxxl {\\n  padding-top: 40px !important; }\\n\\n.m-b-xxxl {\\n  margin-bottom: 40px !important; }\\n\\n.p-b-xxxl {\\n  padding-bottom: 40px !important; }\\n\\n.m-l-xxxl {\\n  margin-left: 40px !important; }\\n\\n.p-l-xxxl {\\n  padding-left: 40px !important; }\\n\\n.m-r-xxxl {\\n  margin-right: 40px !important; }\\n\\n.p-r-xxxl {\\n  padding-right: 40px !important; }\\n\\n.m-xxxl {\\n  margin: 40px !important; }\\n\\n.p-xxxl {\\n  padding: 40px !important; }\\n\\n.m-t-xxxxl {\\n  margin-top: 48px !important; }\\n\\n.p-t-xxxxl {\\n  padding-top: 48px !important; }\\n\\n.m-b-xxxxl {\\n  margin-bottom: 48px !important; }\\n\\n.p-b-xxxxl {\\n  padding-bottom: 48px !important; }\\n\\n.m-l-xxxxl {\\n  margin-left: 48px !important; }\\n\\n.p-l-xxxxl {\\n  padding-left: 48px !important; }\\n\\n.m-r-xxxxl {\\n  margin-right: 48px !important; }\\n\\n.p-r-xxxxl {\\n  padding-right: 48px !important; }\\n\\n.m-xxxxl {\\n  margin: 48px !important; }\\n\\n.p-xxxxl {\\n  padding: 48px !important; }\\n\\n*,\\n*:before,\\n*:after {\\n  box-sizing: border-box; }\\n\\nhtml {\\n  overflow-y: scroll; }\\n\\nbody {\\n  font-family: \\\"brandon-grotesque\\\", brandon-grotesque, sans-serif;\\n  font-size: 16px;\\n  line-height: 24px;\\n  letter-spacing: 0.5px;\\n  font-weight: normal;\\n  color: #000;\\n  color: #333;\\n  background-color: #FFF;\\n  margin: 0;\\n  text-underline-position: under;\\n  -webkit-font-smoothing: antialiased;\\n  -moz-osx-font-smoothing: grayscale; }\\n\\nhtml, body {\\n  height: 100%;\\n  max-height: 100%; }\\n\\n.h1,\\nh1 {\\n  font-family: \\\"Neuzeit Grotesk\\\", \\\"neuzeit-grotesk\\\", neuzeit-grotesk, sans-serif;\\n  font-size: 32px;\\n  font-weight: 300;\\n  line-height: 40px;\\n  letter-spacing: 0.5px;\\n  color: #000;\\n  margin: 0 0 24px; }\\n\\n.h2,\\nh2 {\\n  font-family: \\\"Neuzeit Grotesk\\\", \\\"neuzeit-grotesk\\\", neuzeit-grotesk, sans-serif;\\n  font-size: 28px;\\n  font-weight: 300;\\n  line-height: 40px;\\n  letter-spacing: 0.5px;\\n  color: #000;\\n  margin: 0 0 16px; }\\n\\n.h3,\\nh3 {\\n  font-family: \\\"Neuzeit Grotesk\\\", \\\"neuzeit-grotesk\\\", neuzeit-grotesk, sans-serif;\\n  font-size: 28px;\\n  font-weight: normal;\\n  line-height: 40px;\\n  letter-spacing: 0.5px;\\n  color: #000;\\n  margin: 0 0 16px; }\\n\\n.h4,\\nh4 {\\n  font-family: \\\"Neuzeit Grotesk\\\", \\\"neuzeit-grotesk\\\", neuzeit-grotesk, sans-serif;\\n  font-size: 20px;\\n  line-height: 32px;\\n  font-weight: normal;\\n  letter-spacing: 0.4px;\\n  color: #000;\\n  margin: 0 0 16px; }\\n\\n.text-secondary {\\n  color: #cacaca; }\\n\\na {\\n  color: #333;\\n  text-decoration: underline;\\n  font-weight: inherit;\\n  font-size: inherit;\\n  line-height: inherit;\\n  cursor: pointer; }\\n  a.no-underline {\\n    text-decoration: none; }\\n  a:hover, a:focus {\\n    color: #000;\\n    text-decoration: underline; }\\n\\nsvg, img, video {\\n  display: block;\\n  height: auto;\\n  max-width: 100%; }\\n\\np {\\n  margin: 0 0 16px; }\\n\\nul, ol, li {\\n  margin: 0;\\n  padding: 0;\\n  list-style: none; }\\n\\n:focus {\\n  outline-color: transparent;\\n  outline-style: none; }\\n\\ninput:invalid {\\n  box-shadow: none; }\\n\\nhr {\\n  height: 0;\\n  margin: 0;\\n  border: none;\\n  border-bottom: 1px solid #cacaca; }\\n\\n.container {\\n  max-width: 2400px;\\n  width: 90%;\\n  margin: 0 auto; }\\n\\n.container-center {\\n  display: flex;\\n  height: 100%;\\n  justify-content: center;\\n  align-items: center; }\\n\\n.login-container {\\n  display: flex;\\n  flex-direction: column;\\n  justify-content: center;\\n  align-items: center; }\\n\\n.navbar-container {\\n  border-bottom: 1px solid #cacaca;\\n  height: 56px; }\\n  .navbar-container .navbar {\\n    max-width: 2400px;\\n    width: 90%;\\n    margin: 0 auto;\\n    display: flex;\\n    justify-content: space-between;\\n    height: 100%; }\\n    .navbar-container .navbar section.navbar-section {\\n      display: flex;\\n      justify-content: center;\\n      align-items: center;\\n      height: 100%; }\\n      .navbar-container .navbar section.navbar-section .navbar-brand {\\n        margin-right: 32px; }\\n\\n.card {\\n  max-width: 425px;\\n  min-width: 320px; }\\n  .card > div {\\n    margin: 24px 24px 0 24px; }\\n    .card > div.card-image {\\n      margin: 0; }\\n    .card > div:last-child {\\n      margin-bottom: 24px; }\\n\\n.btn {\\n  font-family: \\\"brandon-grotesque\\\", brandon-grotesque, sans-serif;\\n  font-size: 14px;\\n  line-height: 16px;\\n  letter-spacing: 0.5px;\\n  color: #000;\\n  font-weight: normal;\\n  background-color: #000;\\n  border: none;\\n  color: #FFF;\\n  padding: 16px; }\\n  .btn.btn-link {\\n    background-color: transparent;\\n    color: #000; }\\n\\n.btn-block {\\n  width: 100%; }\\n\\n.form-group {\\n  font-family: \\\"brandon-grotesque\\\", brandon-grotesque, sans-serif;\\n  font-size: 16px;\\n  line-height: 24px;\\n  letter-spacing: 0.5px;\\n  font-weight: normal;\\n  color: #000;\\n  margin-bottom: 16px; }\\n  .form-group input {\\n    font-family: \\\"brandon-grotesque\\\", brandon-grotesque, sans-serif;\\n    font-size: 14px;\\n    line-height: 24px;\\n    letter-spacing: 0.5px;\\n    color: #000;\\n    font-weight: 300;\\n    display: block;\\n    width: 100%;\\n    border: 1px solid #e7e7e7;\\n    padding: 8px 16px; }\\n\\n.validation-summary-errors {\\n  margin-bottom: 16px; }\\n\\n.text-danger {\\n  color: #9c3248; }\\n\\n.bg-solid {\\n  background-color: #0B1835; }\\n\\n.bg-light {\\n  background-color: #FFF; }\\n\\n.avatar {\\n  width: 30px; }\\n\", \"\"]);\n\n// exports\n"
+        }
+      ],
+      "filteredModules": 0,
+      "children": [],
+      "name": "mini-css-extract-plugin node_modules/css-loader/index.js!node_modules/sass-loader/lib/loader.js!node_modules/postcss-loader/lib/index.js!wwwroot/src/styles/index.scss"
+    }
+  ]
+}

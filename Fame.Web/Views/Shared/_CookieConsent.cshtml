@@ -1,0 +1,15 @@
+﻿@using Microsoft.AspNetCore.Http.Features
+
+@{
+    var consentFeature = Context.Features.Get<ITrackingConsentFeature>();
+    var showBanner = !consentFeature?.CanTrack ?? false;
+    var cookieString = consentFeature?.CreateConsentCookie();
+}
+
+@if (showBanner)
+{
+    <div id="cookieConsent" class="flex-row flex-align-items-center flex-justify-center">
+        <span>We use Coooookies, you should too!</span>
+        <button type="button" class="btn btn-default navbar-btn m-l-lg" data-cookie-string="@cookieString">Accept</button>
+    </div>
+}

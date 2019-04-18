@@ -1,0 +1,235 @@
+service: ProductRenders
+
+plugins:
+  - serverless-apigw-binary
+  - serverless-domain-manager
+  
+provider:
+  name: aws
+  runtime: dotnetcore2.1
+  iamRoleStatements:
+    -  Effect: "Allow"
+       Action:
+         - "s3:ListBucket"
+       Resource:
+         Fn::Join:
+           - ""
+           - - "arn:aws:s3:::"
+             - Ref: S3BucketRenders
+    -  Effect: "Allow"
+       Action:
+         - "s3:PutObject"
+         - "s3:GetObject"
+       Resource:
+         Fn::Join:
+           - ""
+           - - "arn:aws:s3:::"
+             - Ref: S3BucketRenders
+             - "/*"
+
+  environment:
+    FameConfig__ImageProcessing__S3BucketName: ${self:custom.bucketName}
+    FameConfig__Dropbox__AccessKey: hEfxAU0OxpAAAAAAAAAAEOt5qxQ0ZH5L9wPPIBm-mOXP2EqkV0HqzUNpkDLS9hcr
+    COMPlus_TieredCompilation: "1"
+    ConnectionStrings__FameConnection: ${file(./config.${self:custom.stage}.yml):DB}
+    FameConfig__Cache__InstanceName: ${file(./config.${self:custom.stage}.yml):FameConfig__Cache__InstanceName}
+    FameConfig__Cache__Port: ${file(./config.${self:custom.stage}.yml):FameConfig__Cache__Port}
+    FameConfig__Cache__Server: ${file(./config.${self:custom.stage}.yml):FameConfig__Cache__Server}
+  region: us-east-1
+
+custom:
+  stage: ${opt:stage, self:provider.stage}
+  bucketName: fame-product-renders-${self:custom.stage}
+  apigwBinary:
+    types:           
+      - 'text/html'
+      - 'image/jpeg'
+      - 'image/jpg'
+      - 'image/png'
+      - 'image/apng'
+      - 'image/webp'
+      - 'application/json'
+      - '*/*'
+  customDomain:
+    domainName: ${file(./config.${self:custom.stage}.yml):APIGW_CNAME}
+    basePath: ''
+    stage: ${self:custom.stage}
+    createRoute53Record: true
+
+package:
+  artifact: bin/release/netcoreapp2.1/deploy-package.zip
+    
+
+functions:
+  FileSyncWorker:
+    handler: Fame.ImageGenerator::Fame.ImageGenerator.LambdaEntryPoint::InvokeFileSyncWorker
+    reservedConcurrency: 100
+    memorySize: 2048
+    timeout: 200
+    events:
+      - sqs:
+          arn:
+            Fn::GetAtt: [ SQSFileSync, Arn ]
+          batchSize: 1
+  LayeringWorker:
+    handler: Fame.ImageGenerator::Fame.ImageGenerator.LambdaEntryPoint::InvokeLayeringWorker
+    memorySize: 2048
+    timeout: 200
+    events:
+      - sqs:
+          arn: 
+            Fn::GetAtt: [ SQSLayering, Arn ]
+          batchSize: 1
+  LayeringAdhocWorker:
+    handler: Fame.ImageGenerator::Fame.ImageGenerator.LambdaEntryPoint::InvokeLayeringAdhocWorker
+    memorySize: 2048
+    reservedConcurrency: 100
+    timeout: 29
+    vpc:
+      securityGroupIds:
+        - sg-f19c53ba
+        - sg-ad538acb
+      subnetIds:
+        - subnet-cc94d1a9
+        - subnet-86ab72bb
+        - subnet-a1f1f4f8
+        - subnet-8056b5f6
+        - subnet-9f291cb4
+        - subnet-8d6ffd81
+    events:
+      - http:
+          path: ImagePreview/{file+}
+          method: get
+          cors: true
+
+resources:
+  Resources:
+    S3BucketRenders:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: ${self:custom.bucketName}
+
+    S3BucketPermissions:
+      Type: AWS::S3::BucketPolicy
+      Properties:
+        Bucket: ${self:custom.bucketName}
+        PolicyDocument:
+          Statement:
+            - Principal: "*"
+              Action:
+                - s3:GetObject
+              Effect: Allow
+              Sid: "AddPerm"
+              Resource: arn:aws:s3:::${self:custom.bucketName}/*
+              
+    SQSFileSync:
+        Type: AWS::SQS::Queue
+        Properties: 
+            QueueName: fame-product-render-file-sync-${self:custom.stage}
+            VisibilityTimeout: 200
+            RedrivePolicy: 
+                deadLetterTargetArn: 
+                    Fn::GetAtt: [ SQSFileSyncDLX, Arn ]
+                maxReceiveCount: 2
+                
+    SQSLayering:
+        Type: AWS::SQS::Queue
+        Properties: 
+            QueueName: fame-product-render-layering-${self:custom.stage}
+            VisibilityTimeout: 200
+            RedrivePolicy: 
+                deadLetterTargetArn: 
+                    Fn::GetAtt: [ SQSLayeringDLX, Arn ]
+                maxReceiveCount: 2
+                
+    SQSFileSyncDLX:
+        Type: AWS::SQS::Queue
+        Properties: 
+            QueueName: fame-product-render-file-sync-dlx-${self:custom.stage}
+                
+    SQSLayeringDLX:
+        Type: AWS::SQS::Queue
+        Properties: 
+            QueueName: fame-product-render-layering-dlx-${self:custom.stage}
+
+                
+    IAMAccess:
+      Type: AWS::IAM::ManagedPolicy
+
+      Properties:
+        ManagedPolicyName: fame-product-render-${self:custom.stage}
+        Description: "Allows to access product render components (e.g. access S3 and publish to sns)"
+        PolicyDocument:
+          Version: "2012-10-17"
+          Statement:
+            -  Effect: "Allow"
+               Action:
+                 - "s3:ListBucket"
+               Resource:
+                 Fn::Join:
+                   - ""
+                   - - "arn:aws:s3:::"
+                     - Ref: S3BucketRenders
+            -  Effect: "Allow"
+               Action:
+                  - "s3:PutObject"
+                  - "s3:GetObject"
+               Resource:
+                Fn::Join:
+                   - ""
+                   - - "arn:aws:s3:::"
+                     - Ref: S3BucketRenders
+                     - "/*"
+            -  Effect: "Allow"
+               Action:
+                - "sqs:Publish"
+                - "sqs:PublishBatch"
+               Resource:
+                - Fn::GetAtt: [ SQSFileSync, Arn ]
+                - Fn::GetAtt: [ SQSLayering, Arn ]
+                
+    RenderDistribution:
+        Type: 'AWS::CloudFront::Distribution'
+        Properties:
+            DistributionConfig:
+                DefaultCacheBehavior:
+                    TargetOriginId: 'RenderBucketOrigin'
+                    ViewerProtocolPolicy: 'redirect-to-https'
+                    DefaultTTL: 2628000 # one month
+                    MinTTL: 2628000 # one month
+                    MaxTTL: 26280000 #ten months
+                    Compress: true
+                    ForwardedValues:
+                        QueryString: true
+                        QueryStringCacheKeys:
+                            - pvid
+                        Cookies:
+                            Forward: 'none'
+                Enabled: true
+                PriceClass: 'PriceClass_100'
+                HttpVersion: 'http2'
+                ViewerCertificate:
+                    AcmCertificateArn: "arn:aws:acm:us-east-1:229836376784:certificate/b1deb3d1-a35d-4613-a1f3-5a0e1cb69c2e"
+                    SslSupportMethod: "sni-only"
+                Origins:
+                  -
+                    Id: 'RenderBucketOrigin'
+                    DomainName: { 'Fn::GetAtt': [ 'S3BucketRenders', 'DomainName' ] }
+                    S3OriginConfig: {}
+                Aliases:
+                  - ${file(./config.${self:custom.stage}.yml):CLOUDFRONT_CNAME}
+    RenderDistributionDns:
+        Type: AWS::Route53::RecordSetGroup
+        Properties:
+            HostedZoneId: "Z15C97JGA28P0D"
+            RecordSets:
+              - Name: ${file(./config.${self:custom.stage}.yml):CLOUDFRONT_CNAME}
+                Type: A
+                AliasTarget:
+                    HostedZoneId: Z2FDTNDATAQYW2
+                    DNSName: { 'Fn::GetAtt': [ 'RenderDistribution', 'DomainName' ] }
+              - Name: ${file(./config.${self:custom.stage}.yml):CLOUDFRONT_CNAME}
+                Type: AAAA
+                AliasTarget:
+                    HostedZoneId: Z2FDTNDATAQYW2
+                    DNSName: { 'Fn::GetAtt': [ 'RenderDistribution', 'DomainName' ] }

@@ -1,0 +1,30 @@
+﻿@model Fame.Service.DTO.ProductionSheetViewModel
+@{
+    if (!this.User.Identity.IsAuthenticated)
+    {
+        Layout = "~/Views/Shared/_LayoutRoot.cshtml";
+    }
+    ViewData["Title"] = "Production Sheet";
+}
+
+<div class="admin-body">
+    <h2 class="margin-center">@ViewData["Title"]</h2>
+
+    <ul class="margin-center">
+        <li><span class="min-width-sm inline-block">@Model.ProductId</span> - @Model.ProductTitle</li>
+        @foreach (var component in Model.Components)
+        {
+            <li><span class="min-width-sm inline-block">@component.ComponentId</span> - @component.Title</li>
+        }
+    </ul>
+    <div class="ps-image-container">
+        <div class="ps-image"><img src="@Model.Front" /></div>
+        <div class="ps-image"><img src="@Model.Back" /></div>
+        <div class="ps-image"><img src="@Model.FrontDefaultColor" /></div>
+        <div class="ps-image"><img src="@Model.BackDefaultColor" /></div>
+        @foreach (var extra in Model.Extras)
+        {
+            <div class="ps-image"><img src="@extra" /></div>
+        }
+    </div>
+</div>

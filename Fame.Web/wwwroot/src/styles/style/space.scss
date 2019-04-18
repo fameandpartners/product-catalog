@@ -1,0 +1,50 @@
+﻿@import '../partials/_spacing.scss';
+
+$spaceamounts: ( 
+    ("none", 0), 
+    ("xxxs", $space-base / 8), 
+    ("xxs", $space-base / 4), 
+    ("xs", $space-base / 2), 
+    ("sm", $space-base), 
+    ("md", $space-base * 2), 
+    ("lg", $space-base * 3), 
+    ("xl", $space-base * 4), 
+    ("xxl", $space-base * 5), 
+    ("xxxl", $space-base * 5), 
+    ("xxxxl", $space-base * 6) 
+);
+$sides: (top, bottom, left, right);
+
+@each $space in $spaceamounts {
+    @each $side in $sides {
+        .m-#{str-slice($side, 0, 1)}-#{nth($space,1)} {
+            margin-#{$side}: #{nth($space,2)} !important;
+        }
+
+        .p-#{str-slice($side, 0, 1)}-#{nth($space,1)} {
+            padding-#{$side}: #{nth($space,2)} !important;
+        }
+    }
+
+    .m-#{nth($space,1)} {
+        margin: #{nth($space,2)} !important;
+    }
+
+    .p-#{nth($space,1)} {
+        padding: #{nth($space,2)} !important;
+    }
+}
+
+
+@each $space in $spaceamounts {
+    .min-width-#{nth($space,1)} {
+        min-width: #{nth($space,2) * 8} !important;
+    }
+}
+
+
+@each $space in $spaceamounts {
+    .max-width-#{nth($space,1)} {
+        max-width: #{nth($space,2) * 8} !important;
+    }
+}

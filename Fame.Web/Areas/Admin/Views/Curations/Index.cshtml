@@ -1,0 +1,67 @@
+﻿@using Fame.Service.Extensions;
+@using PagedList.Core;
+@using Fame.Data.Models;
+@using Fame.Common;
+@model Tuple<IPagedList<Curation>, FameConfig>
+@{
+    ViewData["Title"] = "Curations";
+    var curations = Model.Item1;
+    var fameConfig = Model.Item2;
+}
+
+<div class="admin-body">
+    <h2>@ViewData["Title"]</h2>
+
+    <div class="flex-row">
+        <h4 class="flex-1">Curated Images</h4>
+        <div class="flex-1 text-right">
+            @*@Html.ActionLink("Add Curation", "Add", null, null, new { @class = "btn pull-right" })*@
+        </div>
+    </div>
+
+    <div class="table">
+        <div class="thead tr">
+            <span class="td">Product</span>
+            <span class="td"></span>
+            <span class="td">Images</span>
+        </div>
+
+        @foreach (var curation in curations)
+        {
+            <a href="@Url.Action("Edit", new { id = curation.PID })" class="tr">
+                <div class="td percent-10">
+                    <img src="@curation.ToRenderUrl(fameConfig.Render.Url)" />
+                </div>
+                <div class="td">
+                    <h5 class="m-b-sm">@curation.PID</h5>
+                    <p class="m-b-xxxs">@curation.Name - @string.Join(", ", curation.CurationComponents.Select(c => c.Component.Title.Trim()))</p>
+                </div>
+                <div class="td no-wrap">
+                    @{ var mediaItems = curation.Media.Where(cm => !cm.Archived).ToList(); }
+                    @foreach (var media in mediaItems.Take(4))
+                    {
+                        <img src="@media.CurationMediaVariants.OrderBy(cm => cm.Height).First().ToFullPath(fameConfig.Curations.Url)" />
+                    }
+                    @if (mediaItems.Count > 4)
+                    {
+                        <span class="plusImage">+ @(mediaItems.Count - 4) </span>
+                    }
+                    @if (!mediaItems.Any())
+                    {
+                        <p>--</p>
+                    }
+                </div>
+            </a>
+        }
+    </div>
+
+    @if (curations.PageCount > 1)
+    {
+        <ul class="page-panel">
+            @for (int i = 1; i < curations.PageCount + 1; i++)
+            {
+                <li><a class="btn @(curations.PageNumber == i ? "selected" : "")" href="@Url.Action("Index", "Curations", new { page = i })">@i</a></li>
+            }
+        </ul>
+    }
+</div>

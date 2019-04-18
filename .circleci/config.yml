@@ -1,0 +1,65 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: microsoft/dotnet:2.1-sdk
+    steps:
+      - checkout
+      - run:
+          name: Restore
+          command: dotnet restore
+      - run:
+          name: Run image generator unit tests
+          command: dotnet test Fame.ImageGeneratorTest
+      - run:
+          name: RUN service unit tests 
+          command: dotnet test Fame.Service.UnitTest
+      - run:
+          name: Install Docker client and AWS CLI
+          command: |
+            set -x
+            VER="17.09.0-ce"
+            curl -L -o /tmp/docker-$VER.tgz https://download.docker.com/linux/static/stable/x86_64/docker-$VER.tgz
+            tar -xz -C /tmp -f /tmp/docker-$VER.tgz
+            mv /tmp/docker/* /usr/bin     
+            
+            apt-get update -qq
+            apt-get install -qq python python-pip zip
+            pip install awscli
+      - setup_remote_docker:
+          docker_layer_caching: true
+          version: 17.09.0-ce
+      - run: |
+          VERSION=${CIRCLE_BRANCH/\//-}.$CIRCLE_BUILD_NUM
+          ./.circleci/build-docker.sh $VERSION
+          
+          if [[ $CIRCLE_BRANCH =~ ^release1 ]]; then
+            aws elasticbeanstalk update-environment --environment-name "ProductCatalog-QA1" --version-label $VERSION
+          elif [[ $CIRCLE_BRANCH =~ ^release2 ]]; then
+            aws elasticbeanstalk update-environment --environment-name "ProductCatalog-QA2" --version-label $VERSION
+          elif [[ $CIRCLE_BRANCH =~ ^release3 ]]; then
+            aws elasticbeanstalk update-environment --environment-name "ProductCatalog-QA3" --version-label $VERSION
+          elif [[ $CIRCLE_BRANCH =~ ^develop$ ]]; then
+            aws elasticbeanstalk update-environment --environment-name "ProductCatalog-QA4" --version-label $VERSION
+          elif [[ $CIRCLE_BRANCH =~ ^staging$ ]]; then
+            aws elasticbeanstalk update-environment --environment-name "ProductCatalog-Staging" --version-label $VERSION
+          elif [[ $CIRCLE_BRANCH =~ ^master$ ]]; then
+            aws elasticbeanstalk update-environment --environment-name "ProductCatalog-prod" --version-label $VERSION
+          fi
+      - run:
+          name: Send Success Slack Notification
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              COMMITMESSAGE=`git log --format="%s" -n 1 $CIRCLE_SHA1`
+              COMMITUSER=`git log -1 --pretty=format:'%an'`
+              COMMITURL="https://github.com/fameandpartners/product-catalog/commit/${CIRCLE_SHA1}"
+              curl -X POST -H 'Content-type: application/json' --data "{'text':'*Product-Catalog (${CIRCLE_BRANCH}) : ${COMMITUSER}* \n ${COMMITMESSAGE}', 'mrkdwn': true, 'unfurl_links': false, 'attachments': [ { 'fallback': 'View commit at ${COMMITURL}', 'actions': [ { 'type': 'button', 'text': 'View', 'url': '${COMMITURL}' } ] } ] }" https://hooks.slack.com/services/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
+            fi
+          when: on_success
+      - run:
+          name: Send Success Slack Notification
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              curl -X POST -H 'Content-type: application/json' --data "{'text':'*Product-Catalog (${CIRCLE_BRANCH}) : ${COMMITUSER}* \n Build Failed'}" https://hooks.slack.com/services/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
+            fi
+          when: on_fail

@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "serverless": "^1.28.0",
+    "serverless-apigw-binary": "^0.4.4"
+  },
+  "devDependencies": {
+    "serverless-domain-manager": "^2.6.0"
+  }
+}

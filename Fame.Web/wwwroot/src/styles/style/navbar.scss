@@ -1,0 +1,93 @@
+﻿@import '../vars.scss';
+
+.navbar-container {
+	$navbar-width: 260px;
+
+	display: flex;
+	flex-direction: column;
+	align-content: stretch;
+	width: $navbar-width;
+	background-color: $color-grey90;
+
+	.navbar-brand {
+		margin: $space-base * 3;
+
+		img {
+			margin: auto;
+			width: 216px;
+			height: 16px;
+		}
+	}
+
+	.navbar-menu {
+		flex: 0 1 100%;
+	}
+
+	.navbar-user {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background-color: $color-grey20;
+		color: $color-grey90;
+		min-height: $navbar-height;
+	}
+
+	.collapsible-toggle-lbl {
+		padding: $space-base $space-base * 2;
+		@include text-style-h4;
+		font-weight: bold;
+		font-family: $typography-brandon-grotesque;
+
+		a {
+			display: block;
+			text-decoration: none;
+		}
+	}
+
+	.collapsible-content {
+		a {
+			display: block;
+			padding: $space-base $space-base * 2;
+			text-decoration: none;
+			font-family: $typography-brandon-grotesque;
+		}
+	}
+}
+
+
+input[type='checkbox'].collapsible-toggle {
+    display: none;
+}
+
+.collapsible-toggle-lbl {
+    display: block;
+    cursor: pointer;
+    transition: all 0.25s ease-out;
+
+    &:hover {
+        background-color: $color-grey79;
+    }
+}
+
+.collapsible-toggle-lbl::before {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    transform: translateY(-2px);
+    transition: transform .2s ease-out;
+}
+
+.collapsible-content {
+    max-height: 0px;
+    overflow: hidden;
+    transition: max-height .25s ease-in-out;
+    background-color: $color-grey79;
+}
+
+.collapsible-toggle:checked + .collapsible-toggle-lbl + .collapsible-content {
+    max-height: 300px;
+}
+
+.collapsible-toggle:checked + .collapsible-toggle-lbl {
+    background-color: $color-grey79;
+}

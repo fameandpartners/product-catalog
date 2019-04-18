@@ -1,0 +1,17 @@
+﻿@using Fame.Web.Code.Extensions
+@{
+    var notifications = Html.Notifications();
+}
+
+@if (notifications.Any)
+{
+    <div class="notification-container">
+        @foreach (var notification in notifications.All)
+        {
+        <div class="notification @notification.Status.ToCssStyle()">
+            <img close src="~/img/@notification.Status.ToButtonType()" />
+            @notification.Message
+        </div>
+        }
+    </div>
+}

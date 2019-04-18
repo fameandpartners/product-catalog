@@ -1,0 +1,68 @@
+﻿@{
+    Layout = "_LayoutRoot";
+    var controller = ViewContext.RouteData.Values["Controller"].ToString().ToLower();
+    var action = ViewContext.RouteData.Values["Action"].ToString().ToLower();
+}
+
+<div class="admin-container">
+
+    <div class="navbar-container">
+
+        <a href="@Url.Action("Index", "Home", new {area = "Admin"})" class="navbar-brand">
+            <img src="https://www.fameandpartners.com/assets/logo/new-logo.svg" alt="Fame and Partners" />
+        </a>
+
+        <div class="navbar-menu">
+
+            <input id="productCatalogue" class="collapsible-toggle" type="checkbox" @{if (controller == "home") { <text> checked="checked" </text>  } } />
+            <label for="productCatalogue" class="collapsible-toggle-lbl">
+                @Html.ActionLink("Product Catalogue", "Index", "Home", new { area = "Admin" }) 
+            </label>
+            <nav class="collapsible-content">
+                <ol>
+                    <li>@Html.ActionLink("Import", "Index", "Home", new { area = "Admin" }, new { @class = controller == "home" && action == "index" ? "bold" : "" })</li>
+                </ol>
+            </nav>
+
+            <input id="feed" class="collapsible-toggle" type="checkbox" @{if (controller == "feed") { <text> checked="checked" </text>  } } />
+            <label for="feed" class="collapsible-toggle-lbl">
+                @Html.ActionLink("Feed", "Index", "Feed", new { area = "Admin" })
+            </label>
+            <nav class="collapsible-content">
+                <ol>
+                    <li>@Html.ActionLink("List", "Index", "Feed", new { area = "Admin" }, new { @class = controller == "feed" && action == "index" ? "bold" : "" })</li>
+                </ol>
+            </nav>
+
+            <input id="productionsheet" class="collapsible-toggle" type="checkbox" @{if (controller == "productionsheet") { <text> checked="checked" </text>  } } />
+            <label for="productionsheet" class="collapsible-toggle-lbl">
+                @Html.ActionLink("Production Sheet", "Find", "ProductionSheet", new { area = "Admin" })
+            </label>
+            <nav class="collapsible-content">
+                <ol>
+                    <li>@Html.ActionLink("Find", "Find", "ProductionSheet", new { area = "Admin" }, new { @class = controller == "productionsheet" && action == "find" ? "bold" : "" })</li>
+                </ol>
+            </nav>
+
+            <input id="curations" class="collapsible-toggle" type="checkbox" @{if (controller == "curations") { <text> checked="checked" </text>  } } />
+            <label for="curations" class="collapsible-toggle-lbl">
+                @Html.ActionLink("Curations", "Index", "Curations", new { area = "Admin" })
+            </label>
+            <nav class="collapsible-content">
+                <ol>
+                    <li>@Html.ActionLink("List", "Index", "Curations", new { area = "Admin" }, new { @class = controller == "curations" && action == "index" ? "bold" : "" })</li>
+                </ol>
+            </nav>
+
+        </div>
+
+        <div class="navbar-user">
+            <span>@User.Identity.Name</span>
+            <a href="@Url.Action("logout", "account", new {area = ""})" class="btn btn-link">
+                <img src="~/img/logout.svg" class="avatar" alt="logout" />
+            </a>
+        </div>
+
+    </div>
+    @RenderBody()
+</div>

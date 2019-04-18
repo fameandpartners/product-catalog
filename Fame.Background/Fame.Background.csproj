@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="HangFire" Version="1.6.20" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Fame.Data\Fame.Data.csproj" />
+    <ProjectReference Include="..\Fame.ImageGenerator\Fame.ImageGenerator.csproj" />
+    <ProjectReference Include="..\Fame.Search\Fame.Search.csproj" />
+    <ProjectReference Include="..\Fame.Service\Fame.Service.csproj" />
+  </ItemGroup>
+
+</Project>
