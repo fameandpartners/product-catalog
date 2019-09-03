@@ -1,0 +1,19 @@
+name: "Push CloudFormation Stack"
+on: 
+  push:
+    branches:
+    - develop
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - uses: mgenteluci/cloudformation-deploy-action@v1.3.0
+      env:
+        TEMPLATE: 'Fame.ImageGenerator/serverless.yml'
+        AWS_STACK_NAME: 'ProductRenders-QA4'
+        AWS_REGION: 'us-east-1'
+        AWS_ACCESS_KEY_ID: 'AKIATLA2QZLIG4EA5SEB'
+        AWS_SECRET_ACCESS_KEY: '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'
+        AWS_DEPLOY_BUCKET: 'productrenders-qa4-serverlessdeploymentbucket-11am7jomyhhk2'
