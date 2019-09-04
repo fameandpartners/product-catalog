@@ -1,0 +1,6 @@
+DB: 'Server=product-catalog-production.cs60zg0gg0au.us-east-1.rds.amazonaws.com,1433;User Id=ProductCatalogProd; Password=ZPwi7eWRCEvWJAPPmmLXCczKGTqjzzsQAMeJmuaN3ompJVHcQdg; Initial Catalog=ProductCatalogProd;Integrated Security=false;MultipleActiveResultSets=True;Persist Security Info=True;Max Pool Size=500;'
+FameConfig__Cache__InstanceName: ProdCatProd__
+FameConfig__Cache__Port: 6379
+FameConfig__Cache__Server: spree-prod-redis.qovact.0001.use1.cache.amazonaws.com
+APIGW_CNAME: product-renders-fallback.fameandgroups.com
+CLOUDFRONT_CNAME: product-renders.fameandgroups.com
