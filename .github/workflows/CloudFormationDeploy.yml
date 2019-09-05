@@ -1,0 +1,23 @@
+name: CloudFormationDeploy
+on: 
+  push:
+    branches:
+    - qa4
+    - develop
+    - master
+
+jobs:
+  build:
+    name: Go
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: fameandpartners/ServerlessDeployAction@master
+        env:
+          AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
+          AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+          PACKAGE_DIR ./Fame.ImageGenerator
+          STAGE: 'qa4'
+
+          
+        
