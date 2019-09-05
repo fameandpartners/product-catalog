@@ -31,7 +31,7 @@ jobs:
           version: 17.09.0-ce
       - run: |
           VERSION=${CIRCLE_BRANCH/\//-}.$CIRCLE_BUILD_NUM
-          
+           
           if [[ $CIRCLE_BRANCH =~ ^qa4$ ]]; then
             ./.circleci/build-docker.sh $VERSION
             aws elasticbeanstalk update-environment --environment-name "ProductCatalog-QA4" --version-label $VERSION
