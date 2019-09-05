@@ -3,5 +3,5 @@ FameConfig__Cache__InstanceName: ProdCatDev
 FameConfig__Cache__Port: 6379
 FameConfig__Cache__Server: spree-non-prod.qovact.0001.use1.cache.amazonaws.com
 APIGW_CNAME: product-renders-fallback-dev.fameandgroups.com
-CLOUDFRONT_CNAME: product-renders-qa4.fameandgroups.com
+CLOUDFRONT_CNAME: product-renders-dev.fameandgroups.com
 Dropbox: opL9ZipjKSAAAAAAAAAC9Hzvlkv-YrSn4QKJUxuiQWlstSEmkEP-HUvYB9-3swyT
