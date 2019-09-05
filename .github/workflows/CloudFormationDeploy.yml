@@ -10,7 +10,7 @@ jobs:
   build:
     name: Go
     runs-on: ubuntu-latest
-    steps: 
+    steps:  
       - uses: actions/checkout@v1
       - uses: fameandpartners/ServerlessDeployAction@master
         env:
