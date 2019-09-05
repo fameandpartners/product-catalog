@@ -29,7 +29,7 @@ provider:
 
   environment:
     FameConfig__ImageProcessing__S3BucketName: ${self:custom.bucketName}
-    FameConfig__Dropbox__AccessKey: hEfxAU0OxpAAAAAAAAAAEOt5qxQ0ZH5L9wPPIBm-mOXP2EqkV0HqzUNpkDLS9hcr
+    FameConfig__Dropbox__AccessKey: ${file(./config.${self:custom.stage}.yml):Dropbox}
     COMPlus_TieredCompilation: "1"
     ConnectionStrings__FameConnection: ${file(./config.${self:custom.stage}.yml):DB}
     FameConfig__Cache__InstanceName: ${file(./config.${self:custom.stage}.yml):FameConfig__Cache__InstanceName}

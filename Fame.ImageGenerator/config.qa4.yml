@@ -4,3 +4,4 @@ FameConfig__Cache__Port: 6379
 FameConfig__Cache__Server: spree-qa4-redis.qovact.0001.use1.cache.amazonaws.com
 APIGW_CNAME: product-renders-fallback-qa4.fameandgroups.com
 CLOUDFRONT_CNAME: product-renders-qa4.fameandgroups.com
+Dropbox: hEfxAU0OxpAAAAAAAAAAEOt5qxQ0ZH5L9wPPIBm-mOXP2EqkV0HqzUNpkDLS9hcr
