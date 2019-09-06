@@ -68,7 +68,7 @@ namespace Fame.Web.Areas.Admin.Controllers
             var workflowModel = new WorkflowViewModel
             {
                 Workflow = _workflowService.GetWorkflow(),
-                LayeringDropNames = _productService.GetAllDropNames(true, VersionState.Active),
+                LayeringDropNames = _productService.GetAllDropNames(),
                 SpreeDropNames = _productService.GetAllDropNames()
             };
             return View(workflowModel);
