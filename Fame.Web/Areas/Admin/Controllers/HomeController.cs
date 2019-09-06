@@ -116,7 +116,7 @@ namespace Fame.Web.Areas.Admin.Controllers
         public IActionResult Trigger(string mode, string dropName)
         {
             if (dropName == "PleaseSelect") return RedirectToAction("Index").WithNotification(NotificationType.Error, "Please select a drop");
-            var productIds = _productService.GetActiveProductIdsByDropName(dropName);
+            var productIds = _productService.GetAllProductIdsByDropName(dropName);
 
             if (mode == "layering")
             {
