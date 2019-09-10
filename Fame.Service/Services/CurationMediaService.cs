@@ -93,7 +93,6 @@ namespace Fame.Service.Services
             }
 
             Insert(curationMedia);
-            _unitOfWork.Save();
 
             _logger.LogInformation("CurationMedia - Add Media - Uploading Original File");
             // Save Original image
@@ -110,7 +109,7 @@ namespace Fame.Service.Services
                 var resizedImage = await _imageManipulatorService.ResizeToJpeg(stream, curationMediaVariant.ToSize());
                 await _imageStoreService.Set(meta, resizedImage);
             }
-
+            _unitOfWork.Save();
             return curationMedia;
         }
 
