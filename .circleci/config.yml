@@ -31,20 +31,15 @@ jobs:
           version: 17.09.0-ce
       - run: |
           VERSION=${CIRCLE_BRANCH/\//-}.$CIRCLE_BUILD_NUM
-          ./.circleci/build-docker.sh $VERSION
           
-          if [[ $CIRCLE_BRANCH =~ ^release1 ]]; then
-            aws elasticbeanstalk update-environment --environment-name "ProductCatalog-QA1" --version-label $VERSION
-          elif [[ $CIRCLE_BRANCH =~ ^release2 ]]; then
-            aws elasticbeanstalk update-environment --environment-name "ProductCatalog-QA2" --version-label $VERSION
-          elif [[ $CIRCLE_BRANCH =~ ^release3 ]]; then
-            aws elasticbeanstalk update-environment --environment-name "ProductCatalog-QA3" --version-label $VERSION
-          elif [[ $CIRCLE_BRANCH =~ ^develop$ ]]; then
+          if [[ $CIRCLE_BRANCH =~ ^qa4$ ]]; then
+            ./.circleci/build-docker.sh $VERSION
             aws elasticbeanstalk update-environment --environment-name "ProductCatalog-QA4" --version-label $VERSION
-          elif [[ $CIRCLE_BRANCH =~ ^staging$ ]]; then
-            aws elasticbeanstalk update-environment --environment-name "ProductCatalog-Staging" --version-label $VERSION
           elif [[ $CIRCLE_BRANCH =~ ^master$ ]]; then
+            ./.circleci/build-docker.sh $VERSION
             aws elasticbeanstalk update-environment --environment-name "ProductCatalog-prod" --version-label $VERSION
+          else
+            docker build --build-arg ConnectionStrings__FameConnection=$ConnectionStrings__FameConnection --build-arg CIRCLE_BUILD_NUM=$CIRCLE_BUILD_NUM --build-arg CIRCLE_BRANCH=$CIRCLE_BRANCH --build-arg CIRCLE_SHA1=$CIRCLE_SHA1 -t product-catalog:$VERSION .
           fi
       - run:
           name: Send Success Slack Notification
