@@ -93,23 +93,32 @@ namespace Fame.Service.Services
             }
 
             Insert(curationMedia);
-
-            _logger.LogInformation("CurationMedia - Add Media - Uploading Original File");
-            // Save Original image
-            var originalCurationMediaVariant = curationMedia.CurationMediaVariants.Single(cmv => cmv.IsOriginal);
-            var originalMeta = FileMeta.GetForOnBodyImage(originalCurationMediaVariant);
-            await _imageStoreService.Set(originalMeta, stream);
-
-            // Save Variations of image
-            foreach (var curationMediaVariant in curationMedia.CurationMediaVariants.Where(cmv => !cmv.IsOriginal))
-            {
-                stream.Position = 0;
-                _logger.LogInformation("CurationMedia - Add Media - Uploading Variation");
-                var meta = FileMeta.GetForOnBodyImage(curationMediaVariant);
-                var resizedImage = await _imageManipulatorService.ResizeToJpeg(stream, curationMediaVariant.ToSize());
-                await _imageStoreService.Set(meta, resizedImage);
-            }
             _unitOfWork.Save();
+            //插入数据库后才知道其id所以要先写数据库，如果上传失败则从数据库删除
+            try
+            {
+                _logger.LogInformation("CurationMedia - Add Media - Uploading Original File");
+                // Save Original image
+                var originalCurationMediaVariant = curationMedia.CurationMediaVariants.Single(cmv => cmv.IsOriginal);
+                var originalMeta = FileMeta.GetForOnBodyImage(originalCurationMediaVariant);
+                await _imageStoreService.Set(originalMeta, stream);
+
+                // Save Variations of image
+                foreach (var curationMediaVariant in curationMedia.CurationMediaVariants.Where(cmv => !cmv.IsOriginal))
+                {
+                    stream.Position = 0;
+                    _logger.LogInformation("CurationMedia - Add Media - Uploading Variation");
+                    var meta = FileMeta.GetForOnBodyImage(curationMediaVariant);
+                    var resizedImage = await _imageManipulatorService.ResizeToJpeg(stream, curationMediaVariant.ToSize());
+                    await _imageStoreService.Set(meta, resizedImage);
+                }
+            }
+            catch (Exception ex)
+            {
+                Delete(curationMedia);
+                _unitOfWork.Save();
+                throw ex;
+            }
             return curationMedia;
         }
 
