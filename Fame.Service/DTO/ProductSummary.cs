@@ -60,7 +60,9 @@ namespace Fame.Service.DTO
 
 		public Dictionary<string, bool> PaymentMethods { get; set; }
 
-		public ProductSize Size { get; set; }
+        public Dictionary<string, bool> SiteVersionInfo { get; set; }
+
+        public ProductSize Size { get; set; }
 
 		public List<MediaListItem> Media { get; set; }
 

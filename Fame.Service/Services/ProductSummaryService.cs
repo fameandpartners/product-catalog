@@ -48,6 +48,9 @@ namespace Fame.Service.Services
             var price = productVersion.Prices.SingleOrDefault(p => p.LocalisationCode == localisationCode);
             var paymentMethods = new Dictionary<string, bool>();
             if (localisationCode == _fameConfig.Localisation.AU) paymentMethods.Add("afterPay", true);
+            var siteVersionInfo = new Dictionary<string, bool>();
+            if (localisationCode == _fameConfig.Localisation.AU) { siteVersionInfo.Add("is_au", true); siteVersionInfo.Add("is_us", false); }
+            if (localisationCode == _fameConfig.Localisation.US) { siteVersionInfo.Add("is_au", false); siteVersionInfo.Add("is_us", true); }
 
             var productSummary = new ProductSummary
             {
@@ -68,6 +71,7 @@ namespace Fame.Service.Services
                 },
                 Media = productVersion.Product.PreviewType == PreviewType.Cad ? GetMediaListItems(productVersion.ProductId) : new List<MediaListItem>(),
                 PaymentMethods = paymentMethods,
+                SiteVersionInfo = siteVersionInfo,
                 LayerCads = new List<LayerCad>(),
                 RenderPositions = GetRenderPositions(productVersion),
                 Size = new ProductSize
