@@ -15,11 +15,11 @@ namespace Fame.Data.Extensions
 
         public static IServiceCollection AddDistributedCache(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddDistributedRedisCache(o =>
-            {
-                o.Configuration = configuration["FameConfig:Cache:Server"];
-                o.InstanceName = configuration["FameConfig:Cache:InstanceName"];
-            });
+            //services.AddDistributedRedisCache(o =>
+            //{
+            //    o.Configuration = configuration["FameConfig:Cache:Server"];
+            //    o.InstanceName = configuration["FameConfig:Cache:InstanceName"];
+            //});
             return services;
         }
     }

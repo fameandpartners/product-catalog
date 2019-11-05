@@ -59,13 +59,13 @@ namespace Fame.Service.Services
         
         public async Task<ProductionSheetViewModel> GetProductionSheetAsync(string pid)
         {
+            if (pid == null)
+                return null;
             var cacheKey = CacheKey.Create(GetType(), "InstantiateProductionSheetAsync", pid);
-
             var productionSheet = _distributedCache.GetOrSetAsync(
                 cacheKey,
                 () => InstantiateProductionSheetAsync(pid)
             );
-
             return await productionSheet;
         }
 
@@ -74,6 +74,8 @@ namespace Fame.Service.Services
             var pidItems = pid.Split("~");
             var productId = pidItems.First();
             var productVersion = await _repositories.ProductVersion.Value.GetLatestAsync(productId, VersionState.Active);
+            if (productVersion == null)
+                return null;
             var componentIds = pidItems.Skip(1).ToList();
 
             var components = await _repositories.Component.Value.Get()
