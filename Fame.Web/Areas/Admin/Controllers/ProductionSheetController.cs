@@ -22,7 +22,9 @@ namespace Fame.Web.Areas.Admin.Controllers
         public async Task<IActionResult> Index(string pid)
         {
             var productionSheetViewModel = await _componentService.GetProductionSheetAsync(pid);
-            return View(productionSheetViewModel);
+            if(productionSheetViewModel!=null)
+                return View(productionSheetViewModel);
+            return View("Find", new FindModel("Not Found"));            
         }
 
         [Authorize]

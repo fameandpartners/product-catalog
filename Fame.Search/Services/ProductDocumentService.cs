@@ -132,9 +132,9 @@ namespace Fame.Search.Services
 		}
 
         [DisableConcurrentExecution(600)]
-        public async Task AddAsync(List<ProductDocument> productDocuments, int maxPage = 50)
+        public async Task AddAsync(List<ProductDocument> productDocuments, int maxPage = 30)
         {
-            if (maxPage > 30)
+            if (maxPage > 30)//目的是控制请求总大小小于10M，如果30还过大就再减小。
                 maxPage = 30;
             for (var i = 0 ; i < productDocuments.Count ; i = i + maxPage) {
                 var bulkRequest = new BulkRequest(_fameConfig.Elastic.SearchIndexName) {Operations = new List<IBulkOperation>()};
@@ -143,9 +143,8 @@ namespace Fame.Search.Services
                     bulkRequest.Operations.Add(new BulkIndexOperation<ProductDocument>(productDocument));
                 }
                 var response = await _elasticSearch.Client.BulkAsync(bulkRequest);
-                if (!response.IsValid) _logger.LogError($"ERROR ADDING PRODUCT TO SEARCH{response.DebugInformation.Take(1000).ToString().Replace("{", " ").Replace("}", " ")}");
-                else
-                    _logger.LogInformation("ADDING SUCCESS");
+                if (!response.IsValid)
+                    _logger.LogError($"ERROR ADDING PRODUCT TO SEARCH{response.DebugInformation.Take(1000).ToString().Replace("{", " ").Replace("}", " ")}");
             }
         }
 
