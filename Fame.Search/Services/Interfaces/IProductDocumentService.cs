@@ -9,7 +9,7 @@ namespace Fame.Search.Services
 {
     public interface IProductDocumentService
     {
-        Task AddAsync(List<ProductDocument> productDocuments, int maxPage = 100);
+        Task AddAsync(List<ProductDocument> productDocuments, int maxPage = 30);
         Task<ProductResult> GetAsync(SearchArgs searchArgs);
         Task<List<PIDModel>> SetVariationMetaAsync(List<PIDModel> pidModels);
         Task<PIDModel> SetVariationMetaAsync(PIDModel pidModel);

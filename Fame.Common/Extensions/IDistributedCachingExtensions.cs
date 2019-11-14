@@ -19,7 +19,8 @@ namespace Fame.Common.Extensions
             if (cached != null) return cached;
 
             var value = await action.Invoke();
-            await distributedCache.SetAsync(key, value, options ?? new DistributedCacheEntryOptions(), token);
+            if(value!=null)//为空时无需写入缓存
+                await distributedCache.SetAsync(key, value, options ?? new DistributedCacheEntryOptions(), token);
 
             return value;
         }
@@ -32,7 +33,8 @@ namespace Fame.Common.Extensions
             if (cached != null) return cached;
 
             var value = action.Invoke();
-            distributedCache.Set(key, ToByteArray(value), options ?? new DistributedCacheEntryOptions());
+            if (value != null)//为空时不写入缓存
+                distributedCache.Set(key, ToByteArray(value), options ?? new DistributedCacheEntryOptions());
 
             return value;
         }
