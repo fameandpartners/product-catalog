@@ -18,4 +18,3 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
           PACKAGE_DIR: ./Fame.ImageGenerator          
           AWS_REGION: us-east-1
-          SLS_DEBUG: *
