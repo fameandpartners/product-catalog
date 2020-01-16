@@ -1,5 +1,5 @@
 DB: 'Server=product-catalog-non-prod.cs60zg0gg0au.us-east-1.rds.amazonaws.com,1433;User Id=sa; Password=PTsDJHExMYZQEtaUhgBmtY2; Initial Catalog=ProductCatalogQA4;Integrated Security=false;MultipleActiveResultSets=True;Persist Security Info=True;'
-FameConfig__Cache__InstanceName: ProdCatQA4__
+FameConfig__Cache__InstanceName: ProdCatQA4__a
 FameConfig__Cache__Port: 6379
 FameConfig__Cache__Server: spree-qa4-redis.qovact.0001.use1.cache.amazonaws.com
 APIGW_CNAME: product-renders-fallback-qa4.fameandgroups.com
