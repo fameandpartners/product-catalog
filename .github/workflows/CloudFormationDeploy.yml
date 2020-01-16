@@ -11,7 +11,7 @@ jobs:
     name: Go
     runs-on: ubuntu-latest
     steps:  
-      - uses: fameandpartners/checkout@7f0669ca1fd955c0e0fd85ee8d5b8d16978be97e
+      - uses: fameandpartners/checkout@af513c7a016048ae468971c52ed77d9562c7c819
       - uses: fameandpartners/ServerlessDeployAction@master
         env:
           AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
