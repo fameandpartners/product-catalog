@@ -1,0 +1,2 @@
+route add 169.254.169.254 MASK 255.255.255.255 192.168.1.126 IF 1
+dotnet restore
