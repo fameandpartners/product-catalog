@@ -52,7 +52,7 @@ custom:
       - '*/*'
   customDomain:
     domainName: ${file(./config.${self:custom.stage}.yml):APIGW_CNAME}
-    basePath: ''
+    basePath: '(none)'
     stage: ${self:custom.stage}
     createRoute53Record: true
 
