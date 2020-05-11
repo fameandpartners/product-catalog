@@ -8,7 +8,7 @@ Fame Server is home of the Fame and Partners product catalogue. The catalogue pu
 - Redis Server
 
 ## Config
-- create appsettings.Development.json in Fame.Web folder and add all sensitive/local config variables:
+- create appsettings.Development.json in Fame.Web folder and add all sensitive/local config variables: 
 
 ```
 {
