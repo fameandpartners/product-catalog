@@ -113,7 +113,7 @@ namespace Fame.Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public IActionResult Trigger(string mode, string dropName)
+        public IActionResult Trigger(string mode, string dropName, string prodnames)
         {
             if (dropName == "PleaseSelect" && string.IsNullOrEmpty(prodnames.Trim())) return RedirectToAction("Index").WithNotification(NotificationType.Error, "Please select a drop");
             
