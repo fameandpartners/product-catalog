@@ -163,7 +163,7 @@ namespace Fame.Web.Areas.Admin.Controllers
                 var productIds = prodnames.Trim().Split(';');
                 foreach (var productId in productIds)
                 {
-                    Job.Enqueue(() => ImportProductWithSpreeClient(productId));
+                    Job.Enqueue(() => ImportProductWithSpreeClient(productId.Trim()));
                 }
             }
             else
