@@ -115,18 +115,35 @@ namespace Fame.Web.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult Trigger(string mode, string dropName)
         {
-            if (dropName == "PleaseSelect") return RedirectToAction("Index").WithNotification(NotificationType.Error, "Please select a drop");
-            var productIds = _productService.GetActiveProductIdsByDropName(dropName);
-
-            if (mode == "layering")
+            if (dropName == "PleaseSelect" && string.IsNullOrEmpty(prodnames.Trim())) return RedirectToAction("Index").WithNotification(NotificationType.Error, "Please select a drop");
+            
+            if(!string.IsNullOrEmpty(prodnames.Trim()))
             {
-                TriggerLayering(productIds);
-                return RedirectToAction("Index").WithNotification(NotificationType.Success, "Layering Triggered - Errors and progress can be viewed in Hangfire");
+                var productIds = prodnames.Trim().Split(';');
+                if (mode == "layering")
+                {
+                    TriggerLayering(productIds);
+                    return RedirectToAction("Index").WithNotification(NotificationType.Success, "Layering Triggered - Errors and progress can be viewed in Hangfire");
+                }
+                else
+                {
+                    TriggerFileSync(productIds);
+                    return RedirectToAction("Index").WithNotification(NotificationType.Success, "File Sync Triggered - Errors and progress can be viewed in Hangfire");
+                }
             }
             else
             {
-                TriggerFileSync(productIds);
-                return RedirectToAction("Index").WithNotification(NotificationType.Success, "File Sync Triggered - Errors and progress can be viewed in Hangfire");
+                var productIds = _productService.GetActiveProductIdsByDropName(dropName);
+                if (mode == "layering")
+                {
+                    TriggerLayering(productIds);
+                    return RedirectToAction("Index").WithNotification(NotificationType.Success, "Layering Triggered - Errors and progress can be viewed in Hangfire");
+                }
+                else
+                {
+                    TriggerFileSync(productIds);
+                    return RedirectToAction("Index").WithNotification(NotificationType.Success, "File Sync Triggered - Errors and progress can be viewed in Hangfire");
+                }
             }
         }
 
@@ -136,8 +153,8 @@ namespace Fame.Web.Areas.Admin.Controllers
 
             foreach (var productId in productIds)
             {
-                Job.Enqueue(() => _layeringMaster.ProcessOptionRenders(new LayeringMaster.Request(productId, onlyComponentIds)));
-                Job.Enqueue(() => _layeringMaster.ProcessProductRenders(new LayeringMaster.Request(productId, onlyComponentIds)));
+                Job.Enqueue(() => _layeringMaster.ProcessOptionRenders(new LayeringMaster.Request(productId.Trim(), onlyComponentIds)));
+                Job.Enqueue(() => _layeringMaster.ProcessProductRenders(new LayeringMaster.Request(productId.Trim(), onlyComponentIds)));
             }
             _workflowService.TriggerWorkflowStep(WorkflowStep.Layering);
             _unitOfWork.Save();
@@ -147,8 +164,8 @@ namespace Fame.Web.Areas.Admin.Controllers
         {
             foreach (var productId in productIds)
             {
-                var version = _productVersionService.GetLatest(productId);
-                Job.Enqueue(() => _fileSyncMaster.Process(new FileSyncMaster.Request(productId, version.Product.DropBoxAssetFolder)));
+                var version = _productVersionService.GetLatest(productId.Trim());
+                Job.Enqueue(() => _fileSyncMaster.Process(new FileSyncMaster.Request(productId.Trim(), version.Product.DropBoxAssetFolder)));
             }
             _workflowService.TriggerWorkflowStep(WorkflowStep.FileSync);
             _unitOfWork.Save();
