@@ -119,7 +119,8 @@ namespace Fame.Web.Areas.Admin.Controllers
             
             if(!string.IsNullOrEmpty(prodnames.Trim()))
             {
-                var productIds = prodnames.Trim().Split(';');
+                var productIds_array = prodnames.Trim().Split(';');
+                var productIds = new List<string>(productIds_array);
                 if (mode == "layering")
                 {
                     TriggerLayering(productIds);
