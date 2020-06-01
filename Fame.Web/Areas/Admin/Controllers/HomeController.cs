@@ -155,13 +155,24 @@ namespace Fame.Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public IActionResult SpreeImport(string DropName)
+        public IActionResult SpreeImport(string DropName, string prodnames)
         {
-            if (DropName == "PleaseSelect") return RedirectToAction("Index").WithNotification(NotificationType.Error, "Please select a drop");
-            var productIds = _productService.GetAllProductIdsByDropName(DropName);
-            foreach (var productId in productIds)
+            if (DropName == "PleaseSelect" && string.IsNullOrEmpty(prodnames.Trim())) return RedirectToAction("Index").WithNotification(NotificationType.Error, "Please select a drop");
+            if(!string.IsNullOrEmpty(prodnames.Trim()))
             {
-                Job.Enqueue(() => ImportProductWithSpreeClient(productId));
+                var productIds = prodnames.Trim().Split(';');
+                foreach (var productId in productIds)
+                {
+                    Job.Enqueue(() => ImportProductWithSpreeClient(productId));
+                }
+            }
+            else
+            {
+                var productIds = _productService.GetAllProductIdsByDropName(DropName);
+                foreach (var productId in productIds)
+                {
+                    Job.Enqueue(() => ImportProductWithSpreeClient(productId));
+                }
             }
             _workflowService.TriggerWorkflowStep(WorkflowStep.SpreeExport);
             _unitOfWork.Save();
