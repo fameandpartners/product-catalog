@@ -97,6 +97,7 @@ namespace Fame.Service.Services
             //插入数据库后才知道其id所以要先写数据库，如果上传失败则从数据库删除
             try
             {
+                _logger.LogInformation(curationMedia.PID);
                 _logger.LogInformation("CurationMedia - Add Media - Uploading Original File");
                 // Save Original image
                 var originalCurationMediaVariant = curationMedia.CurationMediaVariants.Single(cmv => cmv.IsOriginal);
