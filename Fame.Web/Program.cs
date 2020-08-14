@@ -30,10 +30,10 @@ namespace Fame.Web
                 .Enrich.FromLogContext()
                 .WriteTo.Console();
 
-            if (!string.IsNullOrEmpty(configuration["FameConfig:SentryDSN"]))
-            {
-                loggerConfiguration = loggerConfiguration.WriteTo.Sentry(configuration["FameConfig:SentryDSN"]);
-            }
+            //if (!string.IsNullOrEmpty(configuration["FameConfig:SentryDSN"]))
+            //{
+            //    loggerConfiguration = loggerConfiguration.WriteTo.Sentry(configuration["FameConfig:SentryDSN"]);
+            //}
             
             Log.Logger = loggerConfiguration.CreateLogger();
             
