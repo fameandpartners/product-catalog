@@ -43,7 +43,8 @@ namespace Fame.ImageGenerator.Workers
                 .Select(async orientation =>
                 {
                     string folderName = $"{request.DropboxFolder}/{orientation}";
-                    Console.Write("begin to process: " + folderName);
+                    System.Diagnostics.Debug.Write("begin to process: ");
+                    System.Diagnostics.Debug.Write(folderName);
                     var dropboxContent = await _dropboxService.ListFolder(folderName);
                     var s3Content = await _s3Service.ListFolder(FileMeta.GetLayerBaseFolder(request.GroupId, orientation));
                     var s3ContentLookup = s3Content.ToLookup(x => x.FileName);
