@@ -160,6 +160,8 @@ namespace Fame.Search.Services
                 if (!_curationService.Exists(pid))
                 {
                     var errorMessage = $"CurationSearchService - Import Curations - Invalid Curation Id: {pid}";
+                    Console.WriteLine("Dropbox path:");
+                    Console.WriteLine(path);
                     try
                     {
                         var curation = await UpsertCuration(pid);
