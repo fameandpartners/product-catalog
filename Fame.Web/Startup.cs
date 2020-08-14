@@ -218,7 +218,7 @@ namespace Fame.Web
                 }
             });
 
-            app.UseMiddleware<SerilogMiddleware>();
+            //app.UseMiddleware<SerilogMiddleware>();
 
             app.UseStaticFiles(new StaticFileOptions
             {
