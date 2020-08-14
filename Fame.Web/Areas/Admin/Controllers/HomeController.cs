@@ -118,12 +118,12 @@ namespace Fame.Web.Areas.Admin.Controllers
         {
             if (string.IsNullOrEmpty(prodnames))
                 prodnames = "";
-            Console.Write("Trigger mode: ");
-            Console.Write(mode);
-            Console.Write("Trigger dropName: ");
-            Console.Write(dropName);
-            Console.Write("Trigger prodnames: ");
-            Console.Write(prodnames);
+            Console.WriteLine("Trigger mode:");
+            Console.WriteLine(mode);
+            Console.WriteLine("Trigger dropName:");
+            Console.WriteLine(dropName);
+            Console.WriteLine("Trigger prodnames:");
+            Console.WriteLine(prodnames);
             if (dropName == "PleaseSelect" && string.IsNullOrEmpty(prodnames.Trim())) return RedirectToAction("Index").WithNotification(NotificationType.Error, "Please select a drop");
             
             if(!string.IsNullOrEmpty(prodnames.Trim()))
