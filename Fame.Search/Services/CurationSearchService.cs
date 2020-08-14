@@ -146,8 +146,8 @@ namespace Fame.Search.Services
 
             var curationPaths = new List<string>();
             var dropboxContent = await _dropboxService.ListFolder(path);
-            Console.WriteLine("dropboxContent:");
-            Console.WriteLine(dropboxContent);
+            foreach (var item in dropboxContent)
+                Console.WriteLine(item.FileName);
 
             foreach (var item in dropboxContent)
             {
