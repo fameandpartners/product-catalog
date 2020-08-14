@@ -12,6 +12,7 @@ using Fame.Web.Code.Extensions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -115,12 +116,14 @@ namespace Fame.Web.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult Trigger(string mode, string dropName, string prodnames)
         {
-            System.Diagnostics.Debug.Write("Trigger mode: ");
-            System.Diagnostics.Debug.Write(mode);
-            System.Diagnostics.Debug.Write("Trigger dropName: ");
-            System.Diagnostics.Debug.Write(dropName);
-            System.Diagnostics.Debug.Write("Trigger prodnames: ");
-            System.Diagnostics.Debug.Write(prodnames);
+            if (string.IsNullOrEmpty(prodnames))
+                prodnames = "";
+            Console.Write("Trigger mode: ");
+            Console.Write(mode);
+            Console.Write("Trigger dropName: ");
+            Console.Write(dropName);
+            Console.Write("Trigger prodnames: ");
+            Console.Write(prodnames);
             if (dropName == "PleaseSelect" && string.IsNullOrEmpty(prodnames.Trim())) return RedirectToAction("Index").WithNotification(NotificationType.Error, "Please select a drop");
             
             if(!string.IsNullOrEmpty(prodnames.Trim()))
