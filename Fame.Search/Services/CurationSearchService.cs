@@ -84,11 +84,24 @@ namespace Fame.Search.Services
             return curation;
         }
 
-		public async Task UpsertAllCurations()
+		public async Task UpsertAllCurations(HashSet<string> styles)
 		{
 			foreach (var pid in _curationService.GetPIDs())
 			{
-				await UpsertCuration(pid);
+                var pid_in_style = false;
+                foreach (var s in styles)
+                {
+                    if (pid.StartsWith(s, StringComparison.OrdinalIgnoreCase))
+                    {
+                        Console.WriteLine("UpsertCuration with pid: ");
+                        Console.WriteLine(pid);
+                        pid_in_style = true;
+                        break;
+                    }
+                }
+                if (!pid_in_style)
+                    continue;
+                await UpsertCuration(pid);
 			}
 			_unitOfWork.Save();
         }
@@ -140,30 +153,49 @@ namespace Fame.Search.Services
             return result.Select(c => c.ToProductListItem()).ToList();
         }
 
-        public async Task<List<string>> ImportCurations(string path)
+        public async Task<List<string>> ImportCurations(string path, HashSet<string> styles)
         {
-            _curationMediaService.ArchiveAll(); //Archive all curations, they will be re-activated as they are re-imported.
+            Console.WriteLine("ImportCurations styles: ");
+            foreach (var s in styles)
+            {
+                Console.WriteLine(s);
+            }
+            _curationMediaService.ArchiveAll(styles); //Archive all curations, they will be re-activated as they are re-imported.
 
             var curationPaths = new List<string>();
             var dropboxContent = await _dropboxService.ListFolder(path);
-            foreach (var item in dropboxContent)
-                Console.WriteLine(item.FileName);
+            //foreach (var item in dropboxContent)
+            //    Console.WriteLine(item.FileName);
 
             foreach (var item in dropboxContent)
             {
+                var in_style = false;
+                foreach (var s in styles)
+                {
+                    if (item.FileName.StartsWith(s, StringComparison.OrdinalIgnoreCase))
+                    {
+                        in_style = true;
+                        break;
+                    }                        
+                }
+                if (!in_style)
+                {
+                    continue;
+                }
+                Console.WriteLine("The file is in styles:");
+                Console.WriteLine(item.FileName);
                 var pathWithoutExtension = item.FileName.Split(".").FirstOrDefault().Split("-");
                 if (pathWithoutExtension.Length != 2) continue;
                 var pidString = pathWithoutExtension[0].ToUpper();
                 var parts = pidString.Split('~');
                 var productId = parts.First();
+ 
                 var componentIds = parts.Skip(1).OrderBy(c => c);
                 var pid = $"{productId}~{String.Join('~', componentIds)}";
                 if (!int.TryParse(pathWithoutExtension[1], out int sortPosition)) continue;
                 if (!_curationService.Exists(pid))
                 {
                     var errorMessage = $"CurationSearchService - Import Curations - Invalid Curation Id: {pid}";
-                    Console.WriteLine("Dropbox path:");
-                    Console.WriteLine(path);
                     try
                     {
                         var curation = await UpsertCuration(pid);
@@ -191,7 +223,7 @@ namespace Fame.Search.Services
                 curationPaths.Add(item.FileName);
             }
                       
-            _curationMediaService.DeleteArchivedMedia();
+            _curationMediaService.DeleteArchivedMedia(styles);
 
             return curationPaths;
         }

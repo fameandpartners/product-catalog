@@ -16,7 +16,7 @@ namespace Fame.Service.Services
         void Update(string pid, List<CurationMedia> curationMedia);
 		string DeleteMedia(int id);
         bool ShouldAddMedia(string pid, int sortPosition, DateTime lastModified);
-        void ArchiveAll();
-        void DeleteArchivedMedia();
+        void ArchiveAll(HashSet<string> styles);
+        void DeleteArchivedMedia(HashSet<string> styles);
     }
 }

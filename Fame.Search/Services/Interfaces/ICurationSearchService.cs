@@ -10,7 +10,7 @@ namespace Fame.Search.Services
         Task<List<ProductListItem>> GetCurationsBySilhouetteAsync(string silhouetteId, string locale);
         Task<List<ProductListItem>> GetCurationsAsync(string[] pids, string locale, bool noMediaForCadImages);
         Task<Curation> UpsertCuration(string pID);
-		Task UpsertAllCurations();
-        Task<List<string>> ImportCurations(string path);
+		Task UpsertAllCurations(HashSet<string> styles);
+        Task<List<string>> ImportCurations(string path, HashSet<string> styles);
     }
 }

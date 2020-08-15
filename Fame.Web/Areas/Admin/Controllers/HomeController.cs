@@ -75,14 +75,6 @@ namespace Fame.Web.Areas.Admin.Controllers
             return View(workflowModel);
         }
 
-        public IActionResult CurationImport()
-        {
-            Job.Enqueue(() => _curationSearchService.ImportCurations(_fameConfig.Curations.DropboxImportPath));
-            _workflowService.TriggerWorkflowStep(WorkflowStep.CurationsImport);
-            _unitOfWork.Save();
-            return RedirectToAction("Index").WithNotification(NotificationType.Success, "Curation Triggered - Errors and progress can be viewed in Hangfire");
-        }
-
         public IActionResult Import()
         {
             Job.Enqueue(() => _importService.Import());
@@ -105,9 +97,67 @@ namespace Fame.Web.Areas.Admin.Controllers
             return RedirectToAction("Index").WithNotification(NotificationType.Success, "Search Index Triggered - Errors and progress can be viewed in Hangfire");
         }
 
-        public IActionResult PopulateAllSearchMeta()
+        public IActionResult CurationImport(string dropName, string prodnames)
         {
-            Job.Enqueue(() => _curationSearchService.UpsertAllCurations());
+            if (string.IsNullOrEmpty(prodnames))
+                prodnames = "";
+            Console.WriteLine("CurationImport");
+            Console.WriteLine("CurationImport dropName:");
+            Console.WriteLine(dropName);
+            Console.WriteLine("CurationImport prodnames:");
+            Console.WriteLine(prodnames);
+            if (dropName == "PleaseSelect" && string.IsNullOrEmpty(prodnames.Trim())) return RedirectToAction("Index").WithNotification(NotificationType.Error, "Please select a drop");
+            HashSet<string> styles = new HashSet<string>();
+            if (!string.IsNullOrEmpty(prodnames.Trim()))
+            {
+                var productIds = prodnames.Trim().Split(';');
+                foreach (var productId in productIds)
+                {
+                    styles.Add(productId);
+                }
+            }
+            else
+            {
+                var productIds = _productService.GetAllProductIdsByDropName(dropName);
+                foreach (var productId in productIds)
+                {
+                    styles.Add(productId);
+                }
+            }
+            Job.Enqueue(() => _curationSearchService.ImportCurations(_fameConfig.Curations.DropboxImportPath, styles));
+            _workflowService.TriggerWorkflowStep(WorkflowStep.CurationsImport);
+            _unitOfWork.Save();
+            return RedirectToAction("Index").WithNotification(NotificationType.Success, "Curation Triggered - Errors and progress can be viewed in Hangfire");
+        }
+
+        public IActionResult PopulateAllSearchMeta(string dropName, string prodnames)
+        {
+            if (string.IsNullOrEmpty(prodnames))
+                prodnames = "";
+            Console.WriteLine("PopulateAllSearchMeta");
+            Console.WriteLine("PopulateAllSearchMeta dropName:");
+            Console.WriteLine(dropName);
+            Console.WriteLine("PopulateAllSearchMeta prodnames:");
+            Console.WriteLine(prodnames);
+            if (dropName == "PleaseSelect" && string.IsNullOrEmpty(prodnames.Trim())) return RedirectToAction("Index").WithNotification(NotificationType.Error, "Please select a drop");
+            HashSet<string> styles = new HashSet<string>();
+            if (!string.IsNullOrEmpty(prodnames.Trim()))
+            {
+                var productIds = prodnames.Trim().Split(';');
+                foreach (var productId in productIds)
+                {
+                    styles.Add(productId);
+                }
+            }
+            else
+            {
+                var productIds = _productService.GetAllProductIdsByDropName(dropName);
+                foreach (var productId in productIds)
+                {
+                    styles.Add(productId);
+                }
+            }
+            Job.Enqueue(() => _curationSearchService.UpsertAllCurations(styles));
             _workflowService.TriggerWorkflowStep(WorkflowStep.SilhouetteData);
             _unitOfWork.Save();
             return RedirectToAction("Index").WithNotification(NotificationType.Success, "Silhouette Data Triggered - Errors and progress can be viewed in Hangfire");
@@ -118,6 +168,7 @@ namespace Fame.Web.Areas.Admin.Controllers
         {
             if (string.IsNullOrEmpty(prodnames))
                 prodnames = "";
+            Console.WriteLine("Trigger");
             Console.WriteLine("Trigger mode:");
             Console.WriteLine(mode);
             Console.WriteLine("Trigger dropName:");
@@ -182,11 +233,11 @@ namespace Fame.Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public IActionResult SpreeImport(string DropName, string prodnames)
+        public IActionResult SpreeImport(string dropName, string prodnames)
         {
             if (string.IsNullOrEmpty(prodnames))
                 prodnames = "";
-            if (DropName == "PleaseSelect" && string.IsNullOrEmpty(prodnames.Trim())) return RedirectToAction("Index").WithNotification(NotificationType.Error, "Please select a drop");
+            if (dropName == "PleaseSelect" && string.IsNullOrEmpty(prodnames.Trim())) return RedirectToAction("Index").WithNotification(NotificationType.Error, "Please select a drop");
             if(!string.IsNullOrEmpty(prodnames.Trim()))
             {
                 var productIds = prodnames.Trim().Split(';');
@@ -197,7 +248,7 @@ namespace Fame.Web.Areas.Admin.Controllers
             }
             else
             {
-                var productIds = _productService.GetAllProductIdsByDropName(DropName);
+                var productIds = _productService.GetAllProductIdsByDropName(dropName);
                 foreach (var productId in productIds)
                 {
                     Job.Enqueue(() => ImportProductWithSpreeClient(productId));

@@ -248,22 +248,55 @@ namespace Fame.Service.Services
             return false;
         }
 
-        public void ArchiveAll()
+        public void ArchiveAll(HashSet<string> styles)
         {
+            Console.WriteLine("ArchiveAll styles: ");
+            foreach (var s in styles)
+            {
+                Console.WriteLine(s);
+            }
             var curationMediaItems = _curationMediaRepo.Get().Where(cm => cm.Archived == false).ToList();
             foreach (var cm in curationMediaItems)
             {
-                cm.Archived = true;
+                foreach(var s in styles)
+                {
+                    if (cm.PID.StartsWith(s, StringComparison.OrdinalIgnoreCase))
+                    {
+                        Console.WriteLine("archived curation with pid: ");
+                        Console.WriteLine(cm.PID);
+                        cm.Archived = true;
+                        break;
+                    }
+                }
             }
             _unitOfWork.Save();
         }
 
-        public void DeleteArchivedMedia()
+        public void DeleteArchivedMedia(HashSet<string> styles)
         {
-            foreach (var id in _curationMediaRepo.Get().Where(cm => cm.Archived).Select(cm => cm.Id))
+            Console.WriteLine("DeleteArchivedMedia styles: ");
+            foreach (var s in styles)
             {
-                DeleteMedia(id);
+                Console.WriteLine(s);
             }
+            var curationMediaItems = _curationMediaRepo.Get().Where(cm => cm.Archived).ToList();
+            foreach (var cm in curationMediaItems)
+            {
+                foreach (var s in styles)
+                {
+                    if (cm.PID.StartsWith(s, StringComparison.OrdinalIgnoreCase))
+                    {
+                        Console.WriteLine("delete curation with pid: ");
+                        Console.WriteLine(cm.PID);
+                        DeleteMedia(cm.Id);
+                        break;
+                    }
+                }
+            }
+            //foreach (var id in _curationMediaRepo.Get().Where(cm => cm.Archived).Select(cm => cm.Id))
+            //{
+            //    DeleteMedia(id);
+            //}
             _unitOfWork.Save();
         }
     }

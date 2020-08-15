@@ -148,9 +148,33 @@
                 <p>If there are a large number of new curation images then it may be worth increasing the size of the AWS instance prior to running.</p>
             </div>
             <div class="tile-footer">
-                @Html.ActionLink("Import", "CurationImport", "Home", new { area = "Admin" }, new { @class = "btn  btn-block " })
+                @if (Model is null || !Model.LayeringDropNames.Any())
+                {
+                    <p>
+                        Import Product catalogue before syncing curations.
+                    </p>
+                }
+                else
+                {
+                    <form asp-action="CurationImport" method="post" class="form-group">
+                        <select name="dropName" class="form-input">
+                            <option value="PleaseSelect">Please select one</option>
+                            @foreach (var dropName in Model.LayeringDropNames)
+                            {
+                                <option value="@dropName">@dropName</option>
+                            }
+                        </select>
+                        <p class="form-input">Input Product Style Numbers(use ; to separate):</p>
+                        <input type="text" name="prodnames" class="form-input" style="font-size: 15px;height: 600;" />
+                        <button type="submit" class="btn btn-block m-t-sm">Submit</button>
+                    </form>
+                }
                 @Html.Partial("RelativeTime", Model.Workflow[Fame.Data.Models.WorkflowStep.CurationsImport].TriggeredDateTime)
             </div>
+            @*<div class="tile-footer">
+                @Html.ActionLink("Import", "CurationImport", "Home", new { area = "Admin" }, new { @class = "btn  btn-block " })
+                @Html.Partial("RelativeTime", Model.Workflow[Fame.Data.Models.WorkflowStep.CurationsImport].TriggeredDateTime)
+            </div>*@
         </div>
 
         <div class="tile">
@@ -159,9 +183,33 @@
                 <p>The silhouette data is generated from the search data and the silhouette/name/description and facets are assigned to the curations.</p>
             </div>
             <div class="tile-footer">
+                @if (Model is null || !Model.LayeringDropNames.Any())
+                {
+                <p>
+                    Import Product catalogue before silhouette datas.
+                </p>
+                }
+                else
+                {
+                    <form asp-action="PopulateAllSearchMeta" method="post" class="form-group">
+                        <select name="dropName" class="form-input">
+                            <option value="PleaseSelect">Please select one</option>
+                            @foreach (var dropName in Model.LayeringDropNames)
+                            {
+                                <option value="@dropName">@dropName</option>
+                            }
+                        </select>
+                        <p class="form-input">Input Product Style Numbers(use ; to separate):</p>
+                        <input type="text" name="prodnames" class="form-input" style="font-size: 15px;height: 600;" />
+                        <button type="submit" class="btn btn-block m-t-sm">Submit</button>
+                    </form>
+                }
+                @Html.Partial("RelativeTime", Model.Workflow[Fame.Data.Models.WorkflowStep.CurationsImport].TriggeredDateTime)
+            </div>
+            @*<div class="tile-footer">
                 @Html.ActionLink("Load Data", "PopulateAllSearchMeta", "Home", new { area = "Admin" }, new { @class = "btn  btn-block " })
                 @Html.Partial("RelativeTime", Model.Workflow[Fame.Data.Models.WorkflowStep.SilhouetteData].TriggeredDateTime)
-            </div>
+            </div>*@
         </div>
 
     </div>
