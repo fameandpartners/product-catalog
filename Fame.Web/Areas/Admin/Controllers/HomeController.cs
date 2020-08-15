@@ -184,6 +184,8 @@ namespace Fame.Web.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult SpreeImport(string DropName, string prodnames)
         {
+            if (string.IsNullOrEmpty(prodnames))
+                prodnames = "";
             if (DropName == "PleaseSelect" && string.IsNullOrEmpty(prodnames.Trim())) return RedirectToAction("Index").WithNotification(NotificationType.Error, "Please select a drop");
             if(!string.IsNullOrEmpty(prodnames.Trim()))
             {
