@@ -119,13 +119,24 @@ namespace Fame.Search.Services
                     var occassions = CalculateOccasions(ids, facets, occasionRuleSets, productCollections).Select(o => occasionLookup[o]).ToList();
                     currentProductDocument.Collections = productCollections;
 
-                    Console.WriteLine("Add ProductVariation:");
-                    Console.WriteLine(productId);
-                    Console.WriteLine(pid);
-                    Console.WriteLine(variationMeta.Description);
-                    foreach(var ta in taxons)
+                    if (productId == "FPG4196")
                     {
-                        Console.WriteLine(ta);
+                        Console.WriteLine("Add ProductVariation:");
+                        if (facets != null)
+                        {
+                            Console.WriteLine("facets:");
+                            facets.ForEach(ft =>
+                              {
+                                  Console.WriteLine(ft);
+                              });
+                        }
+                        Console.WriteLine(productId);
+                        Console.WriteLine(pid);
+                        Console.WriteLine(variationMeta.Description);
+                        foreach (var ta in taxons)
+                        {
+                            Console.WriteLine(ta);
+                        }
                     }
 
                     currentProductDocument.ProductVariations.Add(new ProductVariation()
