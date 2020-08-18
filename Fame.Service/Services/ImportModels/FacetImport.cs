@@ -50,6 +50,7 @@ namespace Fame.Service.Services
                 Console.WriteLine(ret.Name);
                 Console.WriteLine(ret.Description);
                 Console.WriteLine(ret.TaxonString);
+                return ret;
             }
             
             public string TabTitle => "Facet";
