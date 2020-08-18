@@ -119,6 +119,15 @@ namespace Fame.Search.Services
                     var occassions = CalculateOccasions(ids, facets, occasionRuleSets, productCollections).Select(o => occasionLookup[o]).ToList();
                     currentProductDocument.Collections = productCollections;
 
+                    Console.WriteLine("Add ProductVariation:");
+                    Console.WriteLine(productId);
+                    Console.WriteLine(pid);
+                    Console.WriteLine(variationMeta.Description);
+                    foreach(var ta in taxons)
+                    {
+                        Console.WriteLine(ta);
+                    }
+
                     currentProductDocument.ProductVariations.Add(new ProductVariation()
                     {
                         Facets = facets,
