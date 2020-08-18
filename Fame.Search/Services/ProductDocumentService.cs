@@ -144,7 +144,7 @@ namespace Fame.Search.Services
                 }
                 var response = await _elasticSearch.Client.BulkAsync(bulkRequest);
                 if (!response.IsValid)
-                    _logger.LogError($"ERROR ADDING PRODUCT TO SEARCH{response.DebugInformation.Take(1000).ToString().Replace("{", " ").Replace("}", " ")}");
+                    _logger.LogError($"ERROR ADDING PRODUCT TO SEARCH{string.Join("", response.DebugInformation.Take(1000)).Replace("{", " ").Replace("}", " ")}");
             }
         }
 
