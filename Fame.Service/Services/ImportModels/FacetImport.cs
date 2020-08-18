@@ -25,7 +25,7 @@ namespace Fame.Service.Services
             public FacetImport FromCsv(string csvLine)
             {
                 var values = csvLine.Split(',');
-                return new FacetImport
+                var ret = new FacetImport
                 {
                     FacetId = values[0],
                     Title = values[1],
@@ -41,6 +41,15 @@ namespace Fame.Service.Services
                     CollectionIds = values[11].Split("|", StringSplitOptions.RemoveEmptyEntries).ToList(),
                     TaxonString = values[12]
                 };
+                Console.WriteLine("facet import:");
+                Console.WriteLine(ret.FacetId);
+                Console.WriteLine(ret.Title);
+                Console.WriteLine(ret.Subtitle);
+                Console.WriteLine(ret.FacetGroupId);
+                Console.WriteLine(ret.CompatibilityRule);
+                Console.WriteLine(ret.Name);
+                Console.WriteLine(ret.Description);
+                Console.WriteLine(ret.TaxonString);
             }
             
             public string TabTitle => "Facet";
